@@ -5,16 +5,21 @@
     <meta charset="UTF-8">
     <title>vue_mytest</title>
     <script type="text/javascript" src="vue.js"></script>
+    <!-- 要导入vue.js -->
 </head>
 
 <body>
     <div id="app">
+    <!-- 为什么都要使用div括起？ -->
         {{ message }}
     </div>
     <script type="text/javascript">
+    // 通过内联优先级比导入的优先级高的特性，来实现方法重写？
     new Vue({
+        // 一定是new这个吗？
         el: '#app',
         data: {
+            // 还有其他的类型吗？
             message: 'Hello Vue.js!'
         }
     })
