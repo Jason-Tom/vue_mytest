@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>双向绑定</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+    <!-- 方便确定作用对象 -->
+        <p>{{ message }}</p>
+        <input v-model="message">
+    </div>
+    <script type="text/javascript">
+    // 先通过这里来找对应的id实现位置，所以不能放head那里，不然会找不到
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue.js!'
+            }
+        })
+        </script>
+</body>
+
+</html>
