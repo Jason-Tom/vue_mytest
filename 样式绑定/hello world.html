@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ message }}
+    </div>
+    <!-- 动作执行的时候会在内存中找到相应的动作作用对象进行动作执行，可以结合之前调用的动作，动作是在加载scrit时才执行一次，之后文件加载不会重新执行之前的动作，之前的动作只会被调用 -->
+    <script type="text/javascript" src="myjs.js"></script>
+    <!-- 注意script放置位置，程序运行的是内存内容 -->
+        <div id="app">
+        {{ message }}
+    </div>
+</body>
+
+</html>

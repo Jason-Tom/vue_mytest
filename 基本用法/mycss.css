@@ -1,0 +1,25 @@
+.box{
+	/*宽度默认浏览器，高度要自己设定*/
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	height: 600px;
+	background-color: yellow;
+}
+.item{
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px 2px grey;
+	margin: 10px;
+	padding: 10px;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	background-color: #6ad0ff;
+}
+.model{
+	background-color: green;
+	width: 300px;
+	height: 30px;
+}
