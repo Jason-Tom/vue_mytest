@@ -10,5 +10,6 @@ var one_test = Vue.extend({
     template: '多测试'
 })
 
+
 // 注册
 Vue.component('lalala', one_test)

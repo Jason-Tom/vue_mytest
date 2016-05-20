@@ -1,0 +1,14 @@
+.box {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    background-color: yellow;
+}
+
+.item {
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px grey;
+    margin: 5px;
+    background-color: #49c5ff;
+}

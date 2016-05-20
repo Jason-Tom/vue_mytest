@@ -4,15 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <title>vue_mytest</title>
+    <link rel="stylesheet" type="text/css" href="mycss.css">
     <script type="text/javascript" src="vue.js"></script>
 </head>
 
 <body>
-    <div id="example">
-        <my-component></my-component>
-        <lalala></lalala>
-        <div v-for="(key,x) in shuju">
-            <div>{{x.text}}</div>
+    <div class="box">
+        <div class="item">
+            <span>组件基本用法</span>
+            <div id="example">
+                <my-component></my-component>
+                <lalala></lalala>
+            </div>
+        </div>
+        <div class="item">
+            <span>组件局部用法</span>
+            <div id="example2">
+                <my-two>
+                </my-two>
+            </div>
+        </div>
+        <div class="item">
+            <span>注册语法糖（组件构造器和注册和用，简化书写）</span>
+            <div id="example3">
+                <my-four>
+                </my-four>
+            </div>
+        </div>
+        <div class="item">
+            <span>使用 Props 传递数据</span>
+            <div id="example4">
+                <!-- 相当于给父组件开了一个msg输入数据开口 -->
+                <my-five ms-g="hello!"></my-five>
+            </div>
+        </div>
+        <div class="item">
+            <span>使用 Props 传递数据</span>
+            <div id="example5">
+                <input v-model="textbox">
+                <my-seven :msg="textbox"></my-seven>
+            </div>
+        </div>
+        <div class="item">
+            <span>Prop 绑定类型（单项双向）(待定)</span>
+            <div id="example6">
+                <input v-model="textbox">
+                <my-seven :msg="textbox"></my-seven>
+            </div>
+        </div>
+        <div class="item">
+            <span>Prop 验证</span>
+            <div id="example7">
+                <input v-model="textbox">
+                <my-seven :msg="textbox"></my-seven>
+            </div>
         </div>
     </div>
     <script type="text/javascript" src="template.js"></script>

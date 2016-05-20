@@ -1,0 +1,19 @@
+.box {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: yellow;
+    width: 1360px;
+    height: 600px;
+}
+
+.item {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: blue;
+    margin: 5px;
+    box-shadow: 2px 2px 2px 2px grey;
+}

@@ -4,18 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <title>vue_mytest</title>
+    <link rel="stylesheet" type="text/css" href="mycss.css">
     <script type="text/javascript" src="vue.js"></script>
 </head>
 
 <body>
-    <div id="app">
-        {{ message }}
+    <!-- 加载的样式，加载后统一为一个class样式再在css文件里面查找 -->
+    <div class="box">
+        <div class="item">
+            <span class="label label-default">对象语法</span>
+            <div class="" id="app" v-bind:class="{'one':isA,'two':isB}">
+                {{ message }}
+            </div>
+        </div>
+        <div class="item">
+            <span class="label label-default">数组语法</span>
+            <div class="" id="app1" v-bind:class="[One,Two]">
+                {{ message }}
+            </div>
+        </div>
+        <div class="item">
+            <span class="label label-default">绑定内联样式对象语法</span>
+            <div class="" id="app2" v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">
+                {{ message }}
+            </div>
+        </div>
+        <div class="item">
+            <span class="label label-default">绑定内联样式对象语法</span>
+            <!-- 对象具体格式 -->
+            <div class="" id="app3" 
+            v-bind:style="[three,four]">
+                {{ message }}
+            </div>
+        </div>
+        <script type="text/javascript" src="myjs.js"></script>
     </div>
-    <!-- 动作执行的时候会在内存中找到相应的动作作用对象进行动作执行，可以结合之前调用的动作，动作是在加载scrit时才执行一次，之后文件加载不会重新执行之前的动作，之前的动作只会被调用 -->
-    <script type="text/javascript" src="myjs.js"></script>
-    <!-- 注意script放置位置，程序运行的是内存内容 -->
-        <div id="app">
-        {{ message }}
     </div>
 </body>
 

@@ -1,0 +1,29 @@
+.box{
+  width: 1360px;
+  height: 600px;
+  background-color: pink;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.one{
+  width: 200px;
+  height: 100px;
+  background-color: green;
+}
+.two{
+  width: 200px;
+  height: 100px;
+  background-color: yellow;
+}
+.three{
+  width: 200px;
+  height: 100px;
+  background-color: blue;
+  color: grey;
+}
+.item{
+  box-shadow: 2px 2px 2px 2px grey;
+  margin: 5px;
+}
