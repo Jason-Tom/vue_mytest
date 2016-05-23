@@ -46,8 +46,8 @@
             <div>
                 template v-for(带变量)输出!
             </div>
-            <div v-for="(key,x) in 5" :index="$index" :par="par">
-                <br-par></br-par>
+            <div>
+                <br-par v-for="(key,x) in shuzu" :par="x.message" :par2="x.one"></br-par>
             </div>
         </div>
     </div>

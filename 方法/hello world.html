@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <link rel="stylesheet" type="text/css" href="mycss.css">
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div>
+    <!-- @ v-on:  的简写 -->
+        <button @click="greet">Greet</button>
+    </div>
+    <div>
+    <!-- click事件默认的可以不加$event -->
+        <button @click.stop="say('hi')">Say Hi</button>
+        <button @click="say('what')">Say What</button>
+        <!-- $index 和$even是固定变量不要改变 ，原声事件去掉on-->
+        <button @keydown="say1('hello!','dsf', $event)">keydown</button>
+    </div>
+    <script type="text/javascript" src="template.js"></script>
+    <script type="text/javascript" src="myjs.js"></script>
+</body>
+
+</html>
