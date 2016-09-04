@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1 v-if="ok">Yes
+        <h1 v-if="ok">Yes</h1>
+        <h1 v-else>No</h1>
+        </h1>
+        <h1 v-else>No</h1>
+        <!-- 根据条件显示不同东西 -->
+        <!-- 可以嵌套使用 -->
+        <!-- 多重条件通过js 或者路由来实现？ -->
+        <template v-if="ok">
+            <h1>ok</h1>
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
+        </template>
+        <template v-else="ok">
+            <h1>no</h1>
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
+        </template>
+        <!-- 控制显示多个元素，不包括标签本身 -->
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            ok: false
+                // boolean不用使用字符串形式输入
+        }
+    })
+    </script>
+</body>
+
+</html>

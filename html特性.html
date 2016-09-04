@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+    <style type="text/css" media="screen">
+    .item-1 {
+        color: green;
+        font-size: 200px;
+    }
+    </style>
+</head>
+
+<body id="app">
+    <div class="item-{{id}}">lalala</div>
+    <!-- 可以通过该变量批量控制变化（样式，指定元素） -->
+    <!-- mustcash能将文本插到标签属性上进行拼接使用 -->
+    <div v-for="item in 4" class="item-{{$index}}">lalala+{{$index}}</div>
+    <!-- v-for后面能指定数字 -->
+    <!-- {{$index}}双大括号输出 -->
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js!',
+            id: 1
+                // 字符串数字和数字一般能直接相互切换使用
+        }
+    })
+    </script>
+</body>
+
+</html>

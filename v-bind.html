@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <a :href="url" target="_self">单项绑定普通属性值</a>
+        <!-- 单项绑定，通过参数控制属性值 -->
+        <button @click='lalala'>方法改变单项绑定参数</button>
+        <!-- 方法只加上方法名，字符串形式 ，用等号-->
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js!',
+            url: 'https://www.baidu.com/'
+        },
+        methods: {
+            lalala: function() {
+                alert(this.url);
+                // 数要加上this来指定vue全局下的变量
+                this.url = 'https://www.w3.org/TR/custom-elements/#concepts';
+                alert(this.url);
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

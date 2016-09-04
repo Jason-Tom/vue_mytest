@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{fullName}}
+        <button @click="lalala">测试计算属性是否是全局的</button>
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            firstName: 'Foo',
+            lastName: 'Bar',
+        },
+        methods: {
+            lalala: function() {
+                alert('hahaha');
+                this.fullName = 'gagaga';
+                // 计算属性根据依赖来改，程序处理执行应该放在methods后面
+                alert(this.fullName);
+            }
+        },
+        computed: {
+            cache: false,
+            // 不调用缓存，每次调用get方法，和原生的一样，但是绑定效果依然在，只是运行效率将提了
+            fullName: function() {
+                    return this.firstName + ' ' + this.lastName
+                }
+                // 计算属性值为一个方法的返回值
+        }
+    })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+    <style type="text/css" media="screen">
+    p {
+        color: green;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p>
+            {{message}}
+        </p>
+        <partial name="s-par"></partial>
+        <partial name="s-par"></partial>
+        <p>
+            {{{message}}}
+        </p>
+    </div>
+    <script type="text/javascript">
+    Vue.partial('s-par', '<h1>{{{message}}}</h1><h3>by superman</h3>')
+        // 先定义后使用
+
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'hello world <br> superman <br> flying'
+        }
+    })
+    </script>
+</body>
+
+</html>

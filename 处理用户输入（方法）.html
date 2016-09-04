@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ message }}</p>
+        <!-- <button v-on:click="reverseMessage">Reverse Message</button> -->
+        <!-- <button @click="reverseMessage1">Reverse Message</button> -->
+        <button @click="reverseMessage2('gagaga',$event);">Reverse Message</button>
+        <!-- 他这里的内联语句指的是给方法添加参数 -->
+        <!-- 简写绑定事件，绑定原生事件绑定普通语句实现也能通过空方法实现 -->
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js!'
+        },
+        methods: {
+            // 方法都放在methods对象里面，里面每一个方法又是一个个对象，通过逗号隔开
+            reverseMessage: function() {
+                this.message = this.message.split('').reverse().join('')
+                    // data定义的参数是全局变量，方法里面定义的是局部变量
+            },
+            reverseMessage1: function() {
+                this.message = this.message.split('').reverse().join('|')
+            },
+            reverseMessage2: function(lalala) {
+                var xixixi = 'hahaha';
+                lalala = xixixi;
+                alert(lalala);
+                // alert('lalala');
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

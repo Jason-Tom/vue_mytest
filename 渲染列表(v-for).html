@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="todo in todos">
+                <!-- 后一个是数组，前面一个是从每个数组循环获得的对象，通过对象实现数据获取 -->
+                {{ $index }}：{{ todo.text }}
+                <!-- 内含有$index属性要在循环体里面才有作用 -->
+                <!-- 可以循环显示html元素甚至包括参数，比jquery书写上要方便 -->
+            </li>
+            <li>lalala</li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            // 所有变量在data里面放置
+            todos: [{
+                text: 'Learn JavaScript'
+            }, {
+                // 深刻抓住json和对象格式作用
+                text: 'Learn Vue.js'
+            }, {
+                text: 'Build Something Awesome'
+            }]
+        }
+    })
+    </script>
+</body>
+
+</html>

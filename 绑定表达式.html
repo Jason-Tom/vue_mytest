@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ message+message }}
+        <br> {{ var a = 1 }}
+        <br>{{ if (ok) { return message } }}
+        <br> {{ok ? 'YES' : 'NO' }}
+        <!-- 灵活控制一对不同的关系（样式，标签） -->
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js!',
+            ok: true
+        }
+    })
+    </script>
+</body>
+
+</html>

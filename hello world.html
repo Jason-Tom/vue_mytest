@@ -10,18 +10,21 @@
 
 <body>
     <div id="app">
-    <!-- 为什么都要使用div括起？确定作用对象 -->
+        <!-- 确定作用对象 -->
         {{ message }}
+        <!-- 用来输出变量,字符串直接输出 -->
     </div>
     <script type="text/javascript">
     // 通过内联优先级比导入的优先级高的特性，来实现方法重写？
     new Vue({
         // 一定是new这个吗？
         el: '#app',
+        // 其他名称行不行？
         data: {
             // 还有其他的类型吗？有
             // 数据对象，定义数据变量和赋值
             message: 'Hello Vue.js!'
+                // 里面怎么写方法
         }
     })
     </script>

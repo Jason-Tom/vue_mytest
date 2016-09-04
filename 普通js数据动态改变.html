@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        lalala
+    </div>
+    <div>
+        gagaga
+    </div>
+    <button>点击触发事件</button>
+    <script type="text/javascript">
+    var xi = 'pppppppp';
+    var la = document.getElementsByTagName('div');
+
+    function jjjj(argument) {
+        alert(this.xi);
+        this.xi = 'ggggg';
+        alert(this.xi);
+    }
+    // 原生的也会动态改变数据(只能改变最直接的)，只是vuejs封装的稍微好一点，而且使用共同的data
+    var aaaa = document.getElementsByTagName('button');
+    aaaa[0].onclick = jjjj;
+    // 绑定方法的时候，不用括号，有括号表示执行
+    la[0].innerHTML = xi;
+    la[1].innerHTML = xi;
+    </script>
+</body>
+
+</html>

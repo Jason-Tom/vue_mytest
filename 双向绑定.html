@@ -9,19 +9,29 @@
 
 <body>
     <div id="app">
-    <!-- 方便确定作用对象 -->
+        <!-- 方便确定作用对象 -->
         <p>{{ message }}</p>
-        <input v-model="message">
+        <!-- <input v-model="message" lazy> -->
+        <input v-model="message" number>
+        <input v-model="message" debounce="500">
+        <!-- debounce在事件完成后开始计算延时 -->
+        <!-- v-model属性之间混用，小心形成干扰 -->
+        <!-- 实时控制js的变量，同时动态改变在html上面的显示，可以在html放置多个 -->
+        <!-- 作用：实时响应，改变相关程序 -->
+        <select>
+            <option v-model="message"></option>}
+        </select>
+        <textarea v-model="message" name=""></textarea>
     </div>
     <script type="text/javascript">
     // 先通过这里来找对应的id实现位置，所以不能放head那里，不然会找不到
-        new Vue({
-            el: '#app',
-            data: {
-                message: 'Hello Vue.js!'
-            }
-        })
-        </script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js!'
+        }
+    })
+    </script>
 </body>
 
 </html>

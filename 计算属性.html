@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        a={{ a }}, b={{ b }}
+        <button @click="lalala">改变a的值</button>
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            a: 1
+        },
+        methods: {
+            lalala: function() {
+                this.a = 9;
+                alert(this.a);
+            }
+        },
+        computed: {
+            // 就是个让你些方法的地方
+            // 说白了就是将控制属性的方法直接给你个位置让你写，不用自己添加事件
+            // 更灵活的控制属性值，来表现显示方面
+            b: function() {
+                    return this.a + 1
+                }
+                // 计算属性是动态绑定的，和js一样是一个事件，只是被连续触发了而已
+        }
+    })
+    </script>
+</body>
+
+</html>

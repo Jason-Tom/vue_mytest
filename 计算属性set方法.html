@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ fullName }}
+        <button @click="lalala">测试计算属性是否是全局的</button>
+    </div>
+    <script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            firstName: 'Foo',
+            lastName: 'Bar',
+            fullName: 'Foo Bar',
+            ha: 'asfd'
+        },
+        computed: {
+            fullName: {
+                // getter
+                get: function() {
+                    return this.firstName + ' ' + this.lastName + this.ha
+                },
+                // set和get方法名固定的
+                // setter
+                set: function(newValue) {
+                        var names = newValue.split(' ')
+                        this.firstName = names[0]
+                        this.lastName = names[names.length - 1]
+                    }
+                    // 该方法要放在get方法后面，没有返回值
+            }
+        },
+        methods: {
+            // 改变计算属性，一个是使用内置的set方法，另一个是通过set控制data里面的属性
+            lalala: function() {
+                    alert(this.ha);
+                    this.ha = 'hahaha';
+                    alert(this.ha);
+                }
+                // 属性传递到set先传到data
+                // methods和computed公用data数据但是互相之间参数不公用
+                // 要他马上呈现改变，要将改变数字放到get方法
+        }
+    })
+    vm.fullName = 'John Doe';
+    // 通过解析字符串实现多个参数传递
+    // 可以通过给Vue创建对象，在调用相应的方法
+    </script>
+</body>
+
+</html>
