@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="order = order * -1">Reverse Sort Order</button>
+        <!-- 事件还能指定参数 -->
+        <!-- 通过改变order实现动态排序 -->
+        <ul>
+            <li v-for="user in users | orderBy 'name' order">
+                {{ user.name }}
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            order: 1,
+            users: [{
+                name: 'Bruce'
+            }, {
+                name: 'Chuck'
+            }, {
+                name: 'Jackie'
+            }]
+        }
+    })
+    </script>
+</body>
+
+</html>

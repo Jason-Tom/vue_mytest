@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="clickPop()">Pop</button>
+        <!-- 直接通过控制数组控制html元素 -->
+        <button @click="clickPush('push')">Push push</button>
+        <button @click="clickShift()">S33hift</button>
+        <button @click="clickUnshift('shift')">Unshift shift</button>
+        <button @click="clickSplice(2,3)">Splice 2 3</button>
+        <button @click="clickSort()">Sort</button>
+        <button @click="clickReverse()">Reverse</button>
+        <div v-for="item in items">
+            {{item.message}}
+            <button @click="delMessage(item)">X</button>
+        </div>
+        <input v-model="text" @keypress.13="addMessage(text)">
+        <button @click="addMessage(text)">添加</button>
+    </div>
+    <script type="text/javascript">
+    var lalala = new Vue({
+            el: '#app',
+            data: {
+                text: '',
+                items: [{
+                    message: 'Foo'
+                }, {
+                    message: 'Bar'
+                }]
+            },
+            methods: {
+                clickPop() {
+                    this.items.pop();
+                },
+                clickPush(item) {
+                    this.items.push({
+                        message: item
+                    });
+                },
+                clickShift() {
+                    this.items.shift();
+                },
+                clickUnshift(item) {
+                    this.items.unshift({
+                        message: item
+                    });
+                },
+                clickSplice(a, b) {
+                    this.items.splice(a, b);
+                },
+                clickSort() {
+                    this.items.sort(function(a, b) {
+                        return a.message.localeCompare(b.message);
+                    })
+                },
+                clickReverse() {
+                    this.items.reverse();
+                },
+                addMessage(str) {
+                    this.items.push({
+                        message: str
+                    })
+                },
+                delMessage(item) {
+                    this.items.$remove(item);
+                }
+            }
+        })
+        // lalala.items.push({
+        //     message: 'gagaga'
+        // })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <!-- <li v-for="user in users | orderBy 'name' orderBy 1"> -->
+            <!-- orderBy 大于0升序排列，可省略 -->
+            <!-- {{ user.name }} -->
+            <!-- </li> -->
+            
+            <!-- <li v-for="user in users | orderBy 'name' orderBy -1">
+                {{ user.name }}
+            </li> -->
+
+            <li v-for="n in 10 | orderBy true">
+                {{ n }}
+                <!-- 原始类型数组，单纯帮忙遍历 -->
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            users: [{
+                name: 'Brucelalala',
+                text: 'gagaga'
+            }, {
+                name: 'Chuck',
+                text: 'lalala'
+            }, {
+                name: 'Jackie',
+                text: 'xixixi'
+            }]
+        }
+    })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <lalala></lalala>
+    </div>
+    <script type="text/javascript">
+    // import lalala from './lalala'
+    // var lalala = require('./lalala.vue');
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js!'
+        },
+        components: {
+            lalala
+        }
+    })
+    </script>
+</body>
+
+</html>

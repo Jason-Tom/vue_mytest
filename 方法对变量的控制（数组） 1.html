@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="greet">Greet</button>
+        <div v-for="item in name">{{item.lalala}}</div >
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            // name: [{gagaga:"11111"},{gagaga:"22222"},{gagaga:"33333"}]
+            name: [{lalala:"11111"},{lalala:"22222"}]
+            // 变量替换格式要相同，数组格式要相同,长度可以不相同
+        },
+        methods: {
+            greet(event) {
+                // alert('Hello ' + this.name + '!')
+                this.name = [{lalala:"44444"},{lalala:"55"},{lalala:"66"}];
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="greet">Greet</button>
+        <div v-for="item in data">{{item.headimgurl}}</div>
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            data: [{
+                content: "灏肩帥 濂借吹",
+                nickname: "闄堝浗姣�",
+                tousername: "sssss",
+                headimgurl: "Http://1231324.com"
+            }]
+        },
+        methods: {
+            greet(event) {
+                // alert('Hello ' + this.data + '!')
+                this.data = [{
+                    content: "灏肩帥 濂借吹",
+                    nickname: "闄堝浗姣�",
+                    tousername: "sssss",
+                    headimgurl: "Http://1231324.com"
+                }, {
+                    content: "灏肩帥 濂借吹",
+                    nickname: "sssss",
+                    tousername: "sssss",
+                    headimgurl: "213123"
+                }];
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

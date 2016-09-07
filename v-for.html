@@ -10,8 +10,8 @@
 <body>
     <div id="app">
         <ul id="example-2">
-            <li v-for="(lalala, item) in items">
-                {{ parentMessage }} - {{ lalala }} - {{ item.message }}
+            <li v-for="(lalala, item) in employees">
+                {{ parentMessage }} - {{ lalala }} - {{ item.firstName }}
                 <!-- 可以带索引和data属性 -->
             </li>
             <!-- 循环带参数输出元素，包含自身 -->
@@ -26,6 +26,16 @@
                 message: 'Foo'
             }, {
                 message: 'Bar'
+            }],
+            employees: [{
+                "firstName": "John",
+                "lastName": "Doe"
+            }, {
+                "firstName": "Anna",
+                "lastName": "Smith"
+            }, {
+                "firstName": "Peter",
+                "lastName": "Jones"
             }]
         }
     })

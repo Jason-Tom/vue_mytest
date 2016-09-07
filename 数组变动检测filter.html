@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click='mypush("mypush")'>mypush</button>
+        <button @click='mypop()'>mypop</button>
+        <button @click='myFilter()'>myFilter</button>
+        <button @click='myConcat([{message: "222"}])'>myConcat</button>
+        <button @click='mySlice(2,4)'>mySlice</button>
+        <!-- 方法参数是什么对象就放入什么 -->
+        <div v-for="(myindex,item) in lalala">{{myindex}}、{{item.message}}</div>
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            lalala: [{
+                message: '22'
+            }, {
+                message: '11'
+            }, {
+                message: 'Foo'
+            }, {
+                message: '44'
+            }, {
+                message: '55'
+            }]
+        },
+        methods: {
+            mypush(gagaga) {
+                this.lalala.push({
+                    message: gagaga
+                });
+                // 放置一个数组元素对象
+                // 从后面添加
+            },
+            mypop() {
+                this.lalala.pop();
+                // 从后面开始删除
+            },
+            myFilter() {
+                this.lalala = this.lalala.filter(function(item) {
+                    return item.message.match(/Foo/)
+                })
+            },
+            myConcat(lalala) {
+                this.lalala = this.lalala.concat(lalala);
+            },
+            mySlice(gagaga,lalala) {
+                this.lalala =this.lalala.slice(gagaga,lalala);
+                // 从后面开始删除
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

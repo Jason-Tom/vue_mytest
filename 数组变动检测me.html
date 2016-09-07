@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click='mypush("mypush")'>mypush</button>
+        <button @click='mypop()'>mypop</button>
+        <button @click='myshift()'>myshift</button>
+        <button @click='myUnshift("myUnshift")'>myUnshift</button>
+        <button @click='mySplice(1,2,{message:"lalala"},{message:"hahaha"},{message:"hahaha"})'>mySplice</button>
+        <!-- 通过这个来控制列表列的排序 -->
+        <button @click='mySort()'>mySort</button>
+        <button @click='myReverse()'>myReverse</button>
+        <div v-for="(myindex,item) in lalala">{{myindex}}、{{item.message}}</div>
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            lalala: [{
+                message: '22'
+            }, {
+                message: '11'
+            }, {
+                message: '33'
+            }, {
+                message: '44'
+            }, {
+                message: '55'
+            }]
+        },
+        methods: {
+            mypush(gagaga) {
+                this.lalala.push({
+                    message: gagaga
+                });
+                // 放置一个数组元素对象
+                // 从后面添加
+            },
+            mypop() {
+                this.lalala.pop();
+                // 从后面开始删除
+            },
+            myshift() {
+                this.lalala.shift();
+                // 从前面开始删除
+            },
+            myUnshift(gagaga) {
+                this.lalala.unshift({
+                    message: 'unshift'
+                });
+                // 从前面开始添加
+            },
+            mySplice(gagaga, lalala, hahaha, xixixi, hehehe) {
+                this.lalala.splice(gagaga, lalala, hahaha, xixixi, hehehe);
+                // 从前面开始添加
+            },
+            mySort() {
+                this.lalala.sort(function(a, b) {
+                    return a.message.localeCompare(b.message)
+                });
+                // 排序要设定排序函数，返回大的还是小的数
+            },
+            myReverse() {
+                this.lalala.reverse();
+                // 从前面开始删除
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

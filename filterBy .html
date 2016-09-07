@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input v-model="name">
+        <ul>
+            <!-- <li v-for="user in users | filterBy name in 'name'"> -->
+            <!-- users是对象数组 -->
+            <!-- 封装好的计算属性或者说方法 -->
+            <!-- {{ user.name }} -->
+            <!-- </li> -->
+            <!-- <li v-for="user in users | filterBy  'lalala'"> -->
+            <!-- {{ user.name }} -->
+            <!-- 如果没有in指定对象中的某一个会出现整个对象搜索，支持模糊查找，字母大小写适配 -->
+            <!-- </li> -->
+            <li v-for="user in users | filterBy name in 'name' 'text'">
+            <!-- 在对象多个属性中查找 -->
+            <!-- 如何取反条件？ -->
+                {{ user.name }}
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            name: '',
+            users: [{
+                name: 'Brucelalala',
+                text: 'gagaga'
+            }, {
+                name: 'Chuck',
+                text: 'lalala'
+            }, {
+                name: 'Jackie',
+                text: 'xixixi'
+            }]
+        }
+    })
+    </script>
+</body>
+
+</html>

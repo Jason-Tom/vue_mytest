@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{message}}
+        <button @click="lalala">获取json数据</button>
+    </div>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="vue.js"></script>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js!'
+        },
+        methods: {
+            lalala() {
+                alert('lalala');
+                $.ajax({
+                    // 把ajax访问放到这里来
+                    type: "post",
+                    url: "http://123.206.96.76:8080/M2shop/product",
+                    dataType: "json",
+                    async: false,
+                    success: function(data) {
+                        var i = 0;
+                        for (i = 0; i < 4; i++) {
+                            console.log(i + data[i].product.productname);
+                        }
+                        alert(data[2].product.productname);
+                    }
+                });
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

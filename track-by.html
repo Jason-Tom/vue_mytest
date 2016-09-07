@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+    <div v-for="item in items" track-by="$index">{{item.message}}</div >
+    <!-- <div v-for="item in items" track-by="message">{{item.message}}</div > -->
+    </div>
+    <script type="text/javascript">
+    var lalala = new Vue({
+            el: '#app',
+            data: {
+                items: [{
+                    message: '22'
+                }, {
+                    message: '11'
+                }, {
+                    message: 'cc'
+                }, {
+                    message: 'aa'
+                }]
+            }
+        })
+        // lalala.items.push({
+        //     message: 'gagaga'
+        // })
+    </script>
+</body>
+
+</html>
