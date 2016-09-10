@@ -13,7 +13,7 @@
         <button @click="lalala">测试计算属性是否是全局的</button>
     </div>
     <script type="text/javascript">
-    new Vue({
+    var vm = new Vue({
         el: '#app',
         data: {
             firstName: 'Foo',
@@ -22,7 +22,10 @@
         methods: {
             lalala: function() {
                 alert('hahaha');
-                this.fullName = 'gagaga';
+                alert(this.fullName);
+                // this.fullName = 'gagaga';
+                this.firstName = 'gagaga';
+                // 改变计算属性，不能通过方法指定之后直接改，要改变计算属性里面的值，就要改变计算属性里面的有关变量
                 // 计算属性根据依赖来改，程序处理执行应该放在methods后面
                 alert(this.fullName);
             }
@@ -36,6 +39,7 @@
                 // 计算属性值为一个方法的返回值
         }
     })
+    console.log(vm.fullName);
     </script>
 </body>
 

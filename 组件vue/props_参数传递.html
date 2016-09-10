@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="example">
+        <my-component msg="hello!"></my-component>
+        <!-- 传递的是静态的字符串，要传递动态的变量，要绑定数据 -->
+        <!-- 子组件是相对的 -->
+    </div>
+    <script type="text/javascript">
+    Vue.component('my-component', {
+        props: ['msg'],
+        // 子组件就是通过局部注册实现的
+        // 放在模板对象里面
+        // 通过标签传递给当前模板
+        template: `<div>A custom {{msg}}
+        component!</child-g></div>`,
+    })
+    new Vue({
+        el: '#example'
+    })
+    </script>
+</body>
+
+</html>

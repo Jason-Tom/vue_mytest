@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="example">
+        <div>
+            <input v-model="parentMsg">
+            <!-- 要用到的参数需要声明（规范） -->
+            <br> MSG:{{parentMsg}}
+            <!-- <br> gagaga:{{gagaga}} -->
+            <br>
+            <!-- <child :msg="parentMsg"></child> -->
+            <!-- <child :msg.sync="parentMsg"></child> -->
+            <child :msg.once="parentMsg"></child>
+            <!-- <child :msg.sync="gagaga"></child> -->
+        </div>
+    </div>
+    <script type="text/javascript">
+    Vue.component('child', {
+        props: ['msg'],
+        // 数组方式定义变量，没有验证
+        // 如何初始化赋值（通过计算属性初始化,会覆盖该变量）
+        template: `<div style="background:gray;padding:5px;">
+        <h3>msg:{{msg}}</h3>
+        <div>text:{{text}}</div> 
+        <div>lalala:{{lalala}}</div> 
+        <input v-model="text">
+        <button @click="clickBtn">点击我</button>
+        </div>`,
+        data: function() {
+            return {
+                text: 'text1',
+                lalala: 'lalala1',
+                hahaha: 'hahaha'
+                    // 组件的参数设定
+            }
+            // 组件里面的自身参数，都是function返回值，不然全部模版共用，不灵活（会出错？）
+        },
+        methods: {
+            clickBtn: function() {
+                this.msg += this.lalala;
+                // 两种数据获取都要跨越作用域
+                // 传参注意作用域跨越
+            }
+        },
+        computed: {
+            lalala: function() {
+                return this.text + this.text;
+            },
+            // 计算属性不能包含自己变量
+            // 同样要制定作用域
+            // msg: function() {
+            //         return 'xixixi';
+            //     }
+        }
+        // 子组件？
+    })
+    new Vue({
+        el: '#example',
+        data: {
+            parentMsg: 'ggg',
+            // 传值进行单向绑定，只传递一次
+            gagaga: ''
+        }
+    })
+    </script>
+</body>
+
+</html>

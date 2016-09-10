@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="example">
+        <mycomponent></mycomponent>
+        <gagaga></gagaga>
+        {{a}}
+    </div>
+    <script type="text/javascript">
+    var MyComponent = Vue.extend({
+        data: function() {
+            return {
+                a: 10
+            }
+        },
+        // data: {
+
+        //     a: 10
+        // },
+        // 不能这么用
+        methods: {
+            lalala() {
+                alert("ok");
+                // a = 11;
+                this.a = 11;
+                // console.log(a);
+                console.log(this.a);
+            }
+        },
+        template: `<div>A custom {{a}}
+        component!<button @click="lalala">click
+         me</button></div>`
+    })
+    Vue.component('mycomponent', MyComponent)
+    Vue.component('gagaga', MyComponent)
+    new Vue({
+        el: '#example'
+    })
+    </script>
+</body>
+
+</html>

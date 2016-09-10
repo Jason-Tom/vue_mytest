@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="example">
+        <my-root>
+        </my-root>
+    </div>
+    <script type="text/javascript">
+    var Child = Vue.extend({
+        template: '<div>Child</div>'
+    });
+
+    var Parent = Vue.extend({
+            template: '<div>hah<chil-d></chil-d>aha</div>',
+            // html不支持表大小写区分，要和js里面定义的大小写对应，要加上-转意
+            // 局部注册放置的位置，要在注册到父组件的时候放置
+            components: {
+                // <chilD> 只能用在父组件模板内
+                // 全局变量也是一个父组件
+                'chilD': Child
+            }
+        })
+        // Vue.component('my-root', Parent)
+    new Vue({
+        el: '#example',
+        components: {
+            'my-root': Parent
+        }
+        // 这种注册方法更通用，局部注册用成全局注册
+    })
+    </script>
+</body>
+
+</html>

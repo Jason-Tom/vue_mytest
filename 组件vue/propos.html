@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="example">
+        <my-component msg="hello!"></my-component>
+    </div>
+    <script type="text/javascript">
+    var Child = Vue.extend({
+        props: ['msg'],
+        // 只在当前层作用
+        template: '<div>Child {{msg}}</div>'
+    });
+    Vue.component('my-component', {
+        props: ['msg'],
+        // 放在模板对象里面
+        template: `<div>A custom {{msg}}
+        component! <child-g msg="hello!"></child-g></div>`,
+        components: {
+            // <child-g> 只能用在父组件模板内
+            // 全局变量也是一个父组件
+            'child-g': Child
+        }
+    })
+    new Vue({
+        el: '#example'
+    })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="example">
+        <div>
+            <input v-model="parentMsg">
+            <br>
+            <child v-bind:msg="parentMsg"></child>
+            <!-- 父组件通过该方法将参数传递给子组件 -->
+            <!-- 组件是相对而言的 -->
+            <!-- 父组件只是一个范围 -->
+        </div>
+    </div>
+    <script type="text/javascript">
+    Vue.component('child', {
+        props: ['msg'],
+        template: `{{msg}}`,
+    })
+    new Vue({
+        el: '#example'
+    })
+    </script>
+</body>
+
+</html>

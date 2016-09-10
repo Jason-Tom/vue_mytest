@@ -9,14 +9,16 @@
 
 <body>
     <div id="app">
-        a={{ a }}, b={{ b }}
+        a={{ a }}, b={{ b }}, c={{ c }}
         <button @click="lalala">改变a的值</button>
     </div>
     <script type="text/javascript">
-    new Vue({
+    var vm = new Vue({
         el: '#app',
         data: {
-            a: 1
+            a: 1,
+            b: 3
+                // 有计算属性，该变量会被覆盖,计算属性直接调用新的值
         },
         methods: {
             lalala: function() {
@@ -25,15 +27,28 @@
             }
         },
         computed: {
-            // 就是个让你些方法的地方
+            // 就是个让你写方法的地方
             // 说白了就是将控制属性的方法直接给你个位置让你写，不用自己添加事件
             // 更灵活的控制属性值，来表现显示方面
+            c: function() {
+                return this.b + 2
+            },
             b: function() {
+                    // `this` 指向 vm 实例
                     return this.a + 1
+                    // return this.a + 1
+                    // 计算属性不能包含自身变量
+                        // 一开始运行网页就动态指定控制变量
+                        // 动态数据变化用计算属性定义变量
                 }
                 // 计算属性是动态绑定的，和js一样是一个事件，只是被连续触发了而已
         }
+        // 计算属性之间计算有先后顺序，有计算属性的先计算
     })
+    console.log(vm.b) // -> 2
+        // 获得的是计算属性执行后的值
+        vm.a = 7
+    console.log(vm.b) // -> 3
     </script>
 </body>
 

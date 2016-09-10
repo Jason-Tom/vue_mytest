@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- {{message[0].product.addtime}} {{message[1].product.addtime}} -->
+        <button @click="lalala">获取json数据</button>
+        <div v-for="message in message">{{message.product.addtime}}</div>
+    </div>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="vue.js"></script>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            // message: 'Hello Vue.js!',
+            // message: {lala:'gaga'},
+            message: [{
+                product: {
+                    productid: 7,
+                    productname: "ni",
+                    tagid: 123,
+                    productdesc: "为",
+                    addtime: "2016-09-05 09:47:41",
+                    newage: 2,
+                    price: 31,
+                    looknumber: 1,
+                    leavemsgid: 1,
+                    userid: 1
+                },
+                imgurl: null
+            }, {
+                product: {
+                    productid: 7,
+                    productname: "ni",
+                    tagid: 123,
+                    productdesc: "为",
+                    addtime: "2016-09-05 09:47:41",
+                    newage: 2,
+                    price: 31,
+                    looknumber: 1,
+                    leavemsgid: 1,
+                    userid: 1
+                },
+                imgurl: null
+            }]
+        },
+        computed: {
+
+        },
+        methods: {
+            lalala() {
+                alert('lalala');
+                var _self = this;
+                $.ajax({
+                    type: "post",
+                    url: "http://123.206.96.76:8080/M2shop/product",
+                    dataType: "json",
+                    async: false,
+                    success: function(gagagaga) {
+                        _self.message = gagagaga;
+                        // alert(that.product.addtime);
+                        console.log("that" + _self.message[0].product.addtime);
+                        console.log("gagagaga:" + gagagaga[0].product.addtime);
+                    }
+                });
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

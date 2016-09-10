@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+    </div>
+    <script type="text/javascript">
+    var vm = new Vue({
+        data: {
+            a: 1
+        },
+        computed: {
+            // 仅读取，值只须为函数
+            aDouble: function() {
+                return this.a * 2
+            },
+            // 读取和设置
+            aPlus: {
+                get: function() {
+                    return this.a + 1
+                },
+                set: function(v) {
+                    this.a = v - 1
+                }
+            }
+            // 封装好的方法，用于读取和修改计算属性（在根实例外），根实例里面的methods不能直接改变计算属性的值（可能是作用域指定不恰当）
+        }
+    })
+    console.log(vm.aPlus);
+    vm.aPlus = 3
+        // 计算属性的方法还能改变普通变量
+    console.log(vm.a);
+    console.log(vm.aDouble);
+    </script>
+</body>
+
+</html>

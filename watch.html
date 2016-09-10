@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+    </div>
+    <script type="text/javascript">
+    var vm = new Vue({
+        data: {
+            a: 1
+        },
+        watch: {
+            'a': function(val, oldVal) {
+                console.log('new: %s, old: %s', val, oldVal)
+            },
+            // 方法名
+            'b': 'someMethod',
+            // 深度 watcher
+            'c': {
+                handler: function(val, oldVal) { /* ... */ },
+                deep: true
+            }
+        }
+    })
+    vm.a = 2 
+    </script>
+</body>
+
+</html>

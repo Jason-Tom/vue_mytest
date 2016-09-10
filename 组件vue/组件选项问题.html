@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,20 +9,21 @@
 
 <body>
     <div id="example">
-        <my-component></my-component>
+        <mycomponent></mycomponent>
+        <gagaga></gagaga>
     </div>
     <script type="text/javascript">
-    // 定义
     var MyComponent = Vue.extend({
-        template: '<div>A custom component!</div>'
+        data: function() {
+            return {
+                a: 10
+            }
+        },
+        template: `<div>A custom {{a}}
+        component!</div>`
     })
-    // 如何把template单独出一个文件？
-
-    // 注册
-    Vue.component('my-component', MyComponent)
-
-    // 创建根实例
-    // 指定组件指定作用的区域
+    Vue.component('mycomponent', MyComponent)
+    Vue.component('gagaga', MyComponent)
     new Vue({
         el: '#example'
     })
