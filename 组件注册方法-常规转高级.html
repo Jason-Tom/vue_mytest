@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="example">
+        <template id="child-template">
+            <div style="background-color:yellow">子组件</div>
+            <chil-d1></chil-d1>
+        </template>
+        <template id="child1-template">
+            <div style="background-color:pink">子组件1</div>
+        </template>
+        <template id="parent-template">
+            <div style="background-color:green">父组件
+                <chil-d></chil-d>
+            </div>
+        </template>
+        <my-root>
+        </my-root>
+    </div>
+    <script type="text/javascript">
+    // 常规的注册方法，先声明，然后根据其在其他注册声明位置来决定是谁的子组件
+    // 高级注册方法，先定义好父组件根实例，其他的在根实例上面注册的组件都是子组件，要用语法糖注册方法
+    // 高级注册法弱点（不能很好实现嵌套注册？）
+    // 一般注册方法不使用语法糖注册，现定义后在相应位置，定义为子组件
+    var Child1 = Vue.extend({
+        template: '#child1-template'
+    });
+    // 子组件声明要放在前面
+    // 在根实例声明，在任何一层组件都能注册
+    // 父级组件不能跨级调用
+    var Child = Vue.extend({
+        template: '#child-template',
+        // 指定组件位置（通过id指定）或者直接在这里写
+        components: {
+            'chilD1': Child1
+        }
+    });
+    var Parent = Vue.extend({
+        template: '#parent-template',
+        components: {
+            'chilD': Child
+        }
+    })
+    new Vue({
+            el: '#example',
+            components: {
+                'my-root': Parent
+            }
+        })
+        // 高级方法嵌套注册，没必要，（不知道如何实现？），普通方法加强版注册能达到同样效果
+    </script>
+</body>
+
+</html>

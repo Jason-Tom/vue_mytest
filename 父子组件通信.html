@@ -17,6 +17,8 @@
         <!-- 父组件模板 -->
         <div id="events-example">
             <p>Messages: {{ messages | json }}</p>
+            <!-- ????? -->
+            <!-- 组件最终作用域看渲染后的变量相对位置 -->
             <child></child>
         </div>
     </div>
@@ -24,7 +26,10 @@
     // 注册子组件
     // 将当前消息派发出去
     Vue.component('child', {
+        // 这是全局注册的语法语法糖注册方式
+        // 组件是相对而言的，只要是在其它组件的范围内就是他的子组件
         template: '#child-template',
+        // 指定组件模版位置，这样就不用股全部写的挤在一块了
         data: function() {
             return {
                 msg: 'hello'
@@ -33,7 +38,9 @@
         methods: {
             notify: function() {
                 if (this.msg.trim()) {
+                    // 去除两端空格可能是vue设定的？
                     this.$dispatch('child-msg', this.msg)
+                        // dispatch？
                     this.msg = ''
                 }
             }
@@ -49,7 +56,9 @@
         },
         // 在创建实例时 `events` 选项简单地调用 `$on`
         events: {
+            // events？
             'child-msg': function(msg) {
+                // 为什么要加上单引号？
                 // 事件回调内的 `this` 自动绑定到注册它的实例上
                 this.messages.push(msg)
             }

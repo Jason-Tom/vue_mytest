@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="events-example">
+        <template id="child-template">
+            <span>子组件</span>
+        </template>
+        <div>
+            <p>父组件</p>
+            <child></child>
+        </div>
+    </div>
+    <script type="text/javascript">
+    Vue.component('child', {
+        template: '#child-template'
+    })
+
+    var parent = new Vue({
+        el: '#events-example'
+    })
+    </script>
+</body>
+
+</html>
