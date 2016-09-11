@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="toknowchildren">点击让子组件显示</button>
+        <table>
+            <tr>
+                <td>索引</td>
+                <td>ID</td>
+                <td>说明</td>
+            </tr>
+            <!-- <tr is="the-tr" v-for="i in items" v-bind:id="i" :index="$index"></tr> -->
+            <!-- 循环遍历组件，要自己定义数组 -->
+            <!-- <tr is="the-tr" v-for="i in 9" v-bind:id="i" :index="$index"></tr> -->
+            <!-- 或者直接放置常量进行控制 -->
+            <tr is="the-tr" v-for="i in lalala" v-bind:id="i" :index="$index"></tr>
+            <!-- 或者直接放置变量（这种方法更好，能通过方法动态控制变量） -->
+        </table>
+    </div>
+    <script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            items: [1, 2, 3, 4],
+            lalala: 9
+        },
+        methods: {
+            toknowchildren: function() { //切换组件显示  
+                console.log(this.$children);
+                // this.$children[1];
+            }
+        },
+        components: {
+            theTr: { //第一个子组件  
+                template: "<tr>" +
+                    "<td>{{index}}</td>" +
+                    "<td>{{id}}</td>" +
+                    "<td>这里是子组件</td>" +
+                    "</tr>",
+                props: ['id', 'index']
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>

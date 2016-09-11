@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>这是第一个父组件</p>
+        <widget :the-value="test" @some="todo">
+            <!-- 绑定组件数据 -->
+            <span>【第一个父组件插入的内容】</span>
+            <!-- 组件的重复利用通过props和事件及slot来体现 -->
+        </widget>
+    </div>
+    <div id="app2">
+        <p>这是第二个父组件</p>
+        <widget @some="todo">
+        </widget>
+    </div>
+    <script>
+    Vue.component("widget", {
+        template: "<button @click='dosomething'><slot></slot>这是一个复用的组件，点击他{{theValue}}</button>",
+        methods: {
+            dosomething: function() {
+                this.$emit("some");
+                // events可以通过this指定，进而能让methods的方法进行调用
+                // 组件能通过该方法一并访问绑定的方法
+            }
+        },
+        events: {
+            some: function() {
+                    console.log("widget click");
+                }
+                // 不会被组件外面绑定的事件覆盖
+        },
+        props: ['theValue']
+    })
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            test: "test"
+        },
+        methods: {
+            todo: function() {
+                console.log("这是第一个父组件")
+            }
+        }
+    });
+    var vm_other = new Vue({
+        el: '#app2',
+        data: {
+            name: "first"
+        },
+        methods: {
+            todo: function() {
+                console.log("这是另外一个父组件")
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>
