@@ -37,6 +37,7 @@
         },
         methods: {
             notify: function() {
+                // 方法名加上双引号保证满足json格式，不出错（但是在vue这里规范输入尽量不要用引号）
                 if (this.msg.trim()) {
                     // 去除两端空格可能是vue设定的？
                     this.$dispatch('child-msg', this.msg)

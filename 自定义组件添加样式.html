@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        {{msg}}
+        <button @click="root1">操作子组件1</button>
+        <button @click="root2">操作子组件2</button>
+        <br>
+        <aaaaa11111 style="background-color: yellow"></aaaaa11111>
+        <aaaaa11111></aaaaa11111>
+    </div>
+    <template id="aaaaa" style="background-color: yellow">
+        <br> {{msg}}
+        <button @click="aaaaa" style="background-color: yellow">aaaaa操作父组件</button>
+        <!-- 组件整体不能加上样式，要加样式，要在组件里面具体对应来加样式 -->
+        <br>
+        <bbbbb></bbbbb>
+    </template>
+    <template id="bbbbb">
+        {{msg}}
+        <button @click="bbbbb">bbbbb操作父组件</button>
+        <button @click="bbbbb1">bbbbb操作根组件</button>
+    </template>
+    <script type="text/javascript">
+    Vue.component('aaaaa11111', {
+        template: '#aaaaa',
+        data: function() {
+            return {
+                msg: '组件aaa内容'
+            }
+        },
+        methods: {
+            aaaaa() {
+                this.$parent.msg = 'aaaaa子组件修改父组件内容';
+            }
+        }
+    })
+    Vue.component('bbbbb', {
+        template: '#bbbbb',
+        data: function() {
+            return {
+                msg: '组件bbb内容'
+            }
+        },
+        methods: {
+            bbbbb() {
+                this.$parent.msg = 'bbbbb子组件修改父组件内容';
+            },
+            bbbbb1() {
+                this.$root.msg = 'bbbbb子组件修改父组件root内容';
+            }
+        }
+    })
+    new Vue({
+        el: '#root',
+        data: {
+            msg: '父组件内容'
+        },
+        methods: {
+            root1() {
+                this.$children[0].msg = '父组件修改组件1 msg';
+            },
+            root2() {
+                this.$children[1].msg = '父组件修改组件2 msg';
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

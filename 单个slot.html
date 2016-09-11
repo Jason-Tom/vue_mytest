@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <children>
+            <div style="background-color: yellow">12345</div>
+            <div style="background-color: green" @click='xixixi'>12345</div>
+            <!-- 放入的是html元素 -->
+            <!-- 事件加载通过父组件加载，不能加载子组件的方法 -->
+        </children>
+        <!-- 把组建当成基本模板那样来扩展 -->
+        <button @click='gagaga'>gagaga</button>
+    </div>
+    <script>
+    var firstChild = Vue.extend({
+        template: '<p>Child-A: I will send this massage to my parent: </p><input type="text" v-model="inputter"/><br/><br/><button @click="xixixi"><slot></slot>为了明确作用范围，所以使用button标签</button>',
+        data: function() {
+            return {
+                inputter: ""
+            }
+        },
+        watch: {
+            'inputter': function() {
+                this.$dispatch('inputter-msg', this.inputter)
+            }
+        },
+        methods: {
+            xixixi() {
+                alert('xixixi');
+            }
+        }
+    })
+    var vm = new Vue({
+        el: '#app',
+        methods: {
+            gagaga() {
+                alert('gagaga');
+            }
+        },
+        components: {
+            'children': firstChild
+                // 可以将父组件放在子组件的内容，放到想让他显示的地方
+        }
+    });
+    var lalala = document.getElementsByTagName('div');
+    lalala[1].onclick = function() {
+            alert('ok');
+        }
+        // 父组件slot添加的元素，能在父组件添加方法事件
+    </script>
+</body>
+
+</html>

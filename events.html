@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click='sayGoodbye'>触发组件methods事件</button>
+        <button @click='lalala'>触发组件events事件</button>
+        <!-- 不能调用events的方法 -->
+    </div>
+    <script type="text/javascript">
+    var vm = new Vue({
+            el: '#app',
+            events: {
+                // events方法是给外部根实例对象调用的
+                'hook:created': function() {
+                    alert('事件触发');
+                    console.log('created!')
+                },
+                greeting: function(msg) {
+                    console.log(msg)
+                },
+                lalala: function() {
+                    alert('事件触发');
+                    console.log('lalala!')
+                },
+                // 也可以是方法的名字
+                bye: 'sayGoodbye'
+                    // 外部调用根实例内部方法，通过这种方法指定
+            },
+            methods: {
+                sayGoodbye: function() {
+                    alert('事件触发');
+                    console.log('goodbye!')
+                }
+            }
+        }) // -> created!
+    vm.$emit('greeting', 'hi!') // -> hi!
+    vm.$emit('bye') // -> goodbye!
+    vm.$emit('lalala') // -> goodbye!
+    </script>
+</body>
+
+</html>

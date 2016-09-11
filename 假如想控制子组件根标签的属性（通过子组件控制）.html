@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="toshow">点击让子组件显示</button>
+        <children>
+        </children>
+    </div>
+    <script>
+    var vm = new Vue({
+        el: '#app',
+        methods: {
+            toshow: function() {
+                this.$children[0].tohidden = true;
+            }
+        },
+        components: {
+            children: { //这个无返回值，不会继续派发  
+                template: "<div v-if='tohidden' @click='tohide'>这里是子组件</div>",
+                data: function() {
+                    return {
+                        tohidden: true
+                    }
+                },
+                methods: {
+                    tohide: function() {
+                            this.tohidden = !this.tohidden;
+                        }
+                        // 要想通过子组件自身控制组件，就用子组件自身控制
+                }
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>

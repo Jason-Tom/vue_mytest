@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        {{msg}}
+        <button @click="root1">操作子组件1</button>
+        <button @click="root2">操作子组件2</button>
+        <br>
+        <aaaaa11111 v-ref:child></aaaaa11111>
+        <!-- 此标签不能隐藏，除非自己用样式将他隐藏掉，不能通过template指定 -->
+        <aaaaa11111></aaaaa11111>
+        <bbbbb v-ref:lalala></bbbbb>
+        <!-- 不能多层嵌套，必须要放在root下面进行定义 -->
+    </div>
+    <template id="aaaaa">
+        <br> {{msg}}
+        <button @click="aaaaa">aaaaa操作父组件</button>
+        <br>
+        <bbbbb v-ref:lalala></bbbbb>
+    </template>
+    <template id="bbbbb">
+        {{msg}}
+        <button @click="bbbbb">bbbbb操作父组件</button>
+        <button @click="bbbbb1">bbbbb操作根组件</button>
+    </template>
+    <script type="text/javascript">
+    Vue.component('aaaaa11111', {
+        template: '#aaaaa',
+        data: function() {
+            return {
+                msg: '组件aaa内容'
+            }
+        },
+        methods: {
+            aaaaa() {
+                this.$parent.msg = 'aaaaa子组件修改父组件内容';
+            }
+        }
+    })
+    Vue.component('bbbbb', {
+        template: '#bbbbb',
+        data: function() {
+            return {
+                msg: '组件bbb内容'
+            }
+        },
+        methods: {
+            bbbbb() {
+                this.$parent.msg = 'bbbbb子组件修改父组件内容';
+            },
+            bbbbb1() {
+                this.$root.msg = 'bbbbb子组件修改父组件root内容';
+            }
+        }
+    })
+    new Vue({
+        el: '#root',
+        data: {
+            msg: '父组件内容'
+        },
+        methods: {
+            root1() {
+                this.$refs.lalala.bbbbb1();
+            },
+            root2() {
+                this.$refs.child.aaaaa();
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

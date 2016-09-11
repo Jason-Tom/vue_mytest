@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ message }}
+        <button>点击我</button>
+    </div>
+    <script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js!'
+        },
+        methods: {
+            test(msg) {
+                console.log(msg)
+            }
+        }
+    })
+
+    // vm.$on('test', function(msg) {
+    //     console.log(msg)
+    // })
+    vm.$on('test', function() {
+            console.log(this.message)
+        })
+        // $on自定义事件，同样能操作实例里面的变量，但是不能在里面方法定义，里面方法定义有自己的监听方式
+        // 这样定义的好处，可以通过其他方式更灵活的调用和使用事件
+        // vm.$emit('test', 'hi')
+    var lalala = document.getElementsByTagName('button');
+    lalala[0].onclick = function() {
+            alert('事件触发');
+            vm.$emit('test')
+                // 不用结尾加上分号
+        }
+        // 触发当前实例上的事件
+    </script>
+</body>
+
+</html>

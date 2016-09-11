@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <children>
+            <span slot="first" @click="tobeknow">12345</span>
+            <span slot="second">56789</span>
+            <!-- 父组件模板的内容在父组件作用域内编译；子组件模板的内容在子组件作用域内编译 -->
+        </children>
+    </div>
+    <script>
+    var vm = new Vue({
+        el: '#app',
+        methods: {
+            tobeknow: function() {
+                console.log("It is the parent's method");
+            }
+        },
+        components: {
+            children: { 
+                template: "<button><slot name='first'></slot>为了明确作用范围，<slot name='second'></slot>所以使用button标签</button>"
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="toshow">点击让子组件显示</button>
+        <children v-if="abc">
+        </children>
+        <!-- 组件可以添加vuejs命令，命令要有父级位置进行控制 -->
+    </div>
+    <script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            abc: false
+        },
+        methods: {
+            toshow: function() {
+                this.abc = !this.abc;
+                // 通过v-if语句切换，该语句挺巧妙，代替if else语句
+            }
+        },
+        components: {
+            children: { //这个无返回值，不会继续派发  
+                template: "<div>这里是子组件</div>"
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>

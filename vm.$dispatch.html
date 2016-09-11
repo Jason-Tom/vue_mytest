@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+    </div>
+    <script type="text/javascript">
+    var parent = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue.js!'
+            },
+            methods: {
+                test(msg) {
+                    console.log(msg)
+                }
+            }
+        })
+        // 创建父链
+    var child1 = new Vue({
+        parent: parent
+            // 表示将该方法传给那一个作为上一层
+            // 和多层嵌套子组件用法一样
+    })
+    var child2 = new Vue({
+        parent: child1
+    })
+
+    parent.$on('test', function() {
+        console.log('parent notified')
+    })
+    child1.$on('test', function() {
+        console.log('child1 notified')
+    })
+    child2.$on('test', function() {
+            console.log('child2 notified')
+        })
+        // 作用链式触发组件上的相应事件，简单统一
+    child2.$dispatch('test')
+        // 沿着父链一直向上，由该方法的，就执行
+        // -> "child2 notified"
+        // -> "child1 notified"
+        // 没有通知 parent，因为 child1 的回调没有返回 true？？？
+    </script>
+</body>
+
+</html>

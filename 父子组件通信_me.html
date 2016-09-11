@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        {{msg}}
+        <button @click="root1">操作子组件1</button>
+        <button @click="root2">操作子组件2</button>
+        <br>
+        <aaaaa11111></aaaaa11111>
+        <aaaaa11111></aaaaa11111>
+    </div>
+    <template id="aaaaa">
+        <br> {{msg}}
+        <button @click="aaaaa">aaaaa操作父组件</button>
+        <br>
+        <bbbbb></bbbbb>
+        <!-- 先根据根实例注册组件，再根据template确定谁是谁的组件 -->
+    </template>
+    <template id="bbbbb">
+        {{msg}}
+        <button @click="bbbbb">bbbbb操作父组件</button>
+        <button @click="bbbbb1">bbbbb操作根组件</button>
+    </template>
+    <!-- template放置在注册模版之前就行 -->
+    <script type="text/javascript">
+    // script放置最后面
+    Vue.component('aaaaa11111', {
+        // 命名
+        // 语法糖的注册效果相当于已经在根实例注册不需要重复注册
+        template: '#aaaaa',
+        // id指定，与命名无关
+        data: function() {
+            return {
+                msg: '组件aaa内容'
+            }
+        },
+        methods: {
+            aaaaa() {
+                this.$parent.msg = 'aaaaa子组件修改父组件内容';
+            }
+        }
+    })
+    Vue.component('bbbbb', {
+        // 命名
+        // 语法糖的注册效果相当于已经在根实例注册不需要重复注册
+        template: '#bbbbb',
+        // id指定，与命名无关
+        data: function() {
+            return {
+                msg: '组件bbb内容'
+            }
+        },
+        methods: {
+            bbbbb() {
+                this.$parent.msg = 'bbbbb子组件修改父组件内容';
+            },
+            bbbbb1() {
+                this.$root.msg = 'bbbbb子组件修改父组件root内容';
+            }
+        }
+    })
+    new Vue({
+        // 根组件
+        el: '#root',
+        data: {
+            msg: '父组件内容'
+        },
+        // 根组件才用这种数据格式
+        // 每一个组件都要这样注册，即便父组件位于根实例
+        methods: {
+            root1() {
+                this.$children[0].msg = '父组件修改组件1 msg';
+            },
+            root2() {
+                this.$children[1].msg = '父组件修改组件2 msg';
+                // 通过数组依次定位子组件(不同名组件也行，会自动识别组件)
+                // 相比props传递数据，这种方式方式有特定的灵活性
+            }
+        }
+    })
+    </script>
+    <!-- 作用，实现组件循环遍历，并且伴随数据变化 -->
+</body>
+
+</html>

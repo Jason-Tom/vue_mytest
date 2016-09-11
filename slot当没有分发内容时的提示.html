@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <children>
+            <span slot="first">【12345】</span>
+            <span slot>【12345】</span>
+            <!-- <span slot="last">gagaga</span> -->
+        </children>
+    </div>
+    <script>
+    var vm = new Vue({
+        el: '#app',
+        components: {
+            children: { 
+                template: "<div><slot name='first'><button>【如果没有内容则显示我1】</button></slot>为了明确作用范围，<slot name='last'><button>【如果没有内容则显示我2】</button></slot>所以使用button标签</div><slot></slot>"
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>

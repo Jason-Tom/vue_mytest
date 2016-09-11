@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <children>
+            <span slot="first">12345</span>
+            <span slot="second">56789</span>
+            <!-- 回到子组件指定位置 -->
+        </children>
+    </div>
+    <script>
+    var vm = new Vue({
+        el: '#app',
+        components: {
+            children: { //这个无返回值，不会继续派发  
+                template: "<button><slot name='second'></slot>为了明确作用范围，<slot name='first'></slot>所以使用button标签</button>"
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>

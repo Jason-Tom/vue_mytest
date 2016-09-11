@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+    </div>
+    <script type="text/javascript">
+    var parent = new Vue()
+        // child1 和 child2 是兄弟
+    var child1 = new Vue({
+        parent: parent
+    })
+    var child2 = new Vue({
+            parent: parent
+        })
+        // child3 在 child2 内
+    var child3 = new Vue({
+        parent: child2
+    })
+
+    child1.$on('test', function() {
+        console.log('child1 notified')
+    })
+    child2.$on('test', function() {
+        console.log('child2 notified')
+    })
+    child3.$on('test', function() {
+        console.log('child3 notified')
+    })
+
+    parent.$broadcast('test')
+        // 和dispatch反过来
+        // -> "child1 notified"
+        // -> "child2 notified"
+        // 没有通知 child3，因为 child2 的回调没有返回 true
+    </script>
+</body>
+
+</html>
