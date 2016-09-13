@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue Router Example</title>
+    <style>
+    .v-link-active {
+        color: red;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Hello App!</h1>
+        <p>
+            <a v-link="{ path: '/foo' }">Go to /foo</a>
+            <a v-link="{ path: '/foo/bar' }">Go to /foo/bar</a>
+            <a v-link="{ path: '/foo/baz' }">Go to /foo/baz</a>
+        </p>
+        <router-view></router-view>
+    </div>
+    <script src="vue.js"></script>
+    <script src="vue-router.js"></script>
+    <script type="text/javascript">
+    var Foo = Vue.extend({
+        template: '<div class="foo">' +
+            '<h2>This is Foo!</h2>' +
+            '<router-view></router-view>' + // <- nested outlet
+            '</div>'
+            // template对应的实际上是一个字符串
+    })
+
+    var Bar = Vue.extend({
+        template: '<p>This is bar!</p>'
+    })
+
+    var Baz = Vue.extend({
+        template: '<p>This is baz!</p>'
+    })
+
+    var router = new VueRouter()
+
+    router.map({
+        '/foo': {
+            component: Foo,
+            subRoutes: {
+                '/': {
+                    component: {
+                        template: '<p>Default sub view for Foo</p>'
+                    }
+                },
+                // 嵌套路由作用？
+                // 嵌套路由实现？
+                '/bar': {
+                    component: Bar
+                },
+                '/baz': {
+                    component: Baz
+                }
+            }
+        }
+    })
+
+    var App = Vue.extend({})
+    router.start(App, '#app')
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js">
+    </script>
+    <style type="text/css" media="screen">
+    .on-e {
+        color: red;
+    }
+    
+    .two {
+        color: green;
+        background-color: pink
+    }
+    
+    .three {
+        font-size: 50px;
+        background-color: purple
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <span :style="{ 'color': 'green' }">lalala</span>
+        <span class="three" :class="testcolor">gagaga</span>
+        <!-- class绑定的样式会被原来的class样式覆盖 -->
+        <span :class="{ 'on-e': isA, 'two': isB }">hahaha</span>
+        <div :style="{width:'100px',height:'100px',backgroundColor:'blue
+        ',fontSize:'30px'}" style="font-size: 200px;background-color: yellow;color:red;">sfsd</div>
+        <!-- style绑定的样式连内联样式都能覆盖 -->
+        <div :style="styleObject">333333</div>
+        <div :style="[styleObject, styleObject1]">333333</div>
+        <div :style="{width:'100px',height:'100px','background-color':'orange'}"></div>
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js!',
+            isA: false,
+            isB: true,
+            testcolor: {
+                two: true
+            },
+            vtestcolor1: {
+                three: true
+            },
+            styleObject: {
+                color: 'red',
+                fontSize: '50px'
+            },
+            styleObject1: {
+                backgroundColor: 'red',
+                fontSize: '100px',
+                color: 'yellow'
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

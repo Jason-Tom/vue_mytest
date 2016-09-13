@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <template id="bbbbb">
+        <span>bbbb组件</span>
+        <hahaha></hahaha>
+    </template>
+    <template id="lalala">
+        <span>lalala组件</span>
+        <hahaha></hahaha>
+        <!-- 局部组件只能在自己的父组件下面调用 -->
+        <bbbbb></bbbbb>
+        <!-- 全局组件能在任何组件下面调用 -->
+        <!-- 作用域？ -->
+    </template>
+    <template id="gagaga">
+        <span>gagaga组件</span>
+    </template>
+    <template id="hahaha">
+        <span>hahaha组件</span>
+    </template>
+    <div id="app">
+        <!--         <button @click="toshow">点击让子组件显示</button>
+        <component v-bind:is="which_to_show" keep-alive></component> -->
+        <bbbbb></bbbbb>
+        <lalala></lalala>
+        <gagaga></gagaga>
+    </div>
+    <script>
+    Vue.component('bbbbb', {
+        template: '#bbbbb',
+        data: function() {
+            return {
+                msg: '组件bbb内容'
+            }
+        },
+        methods: {
+            bbbbb() {
+                this.$parent.msg = 'bbbbb子组件修改父组件内容';
+            },
+            bbbbb1() {
+                this.$root.msg = 'bbbbb子组件修改父组件root内容';
+            }
+        }
+    })
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            which_to_show: "first"
+        },
+        methods: {
+            toshow: function() { //切换组件显示  
+                var arr = ["first", "second", "third", ""];
+                var index = arr.indexOf(this.which_to_show);
+                if (index < 3) {
+                    this.which_to_show = arr[index + 1];
+                } else {
+                    this.which_to_show = arr[0];
+                }
+                console.log(this.$children);
+            }
+        },
+        components: {
+            lalala: { //第一个子组件  
+                template: "#lalala",
+                components: {
+                    hahaha: { //第一个子组件  
+                        template: "#hahaha"
+                    }
+                    // 多层嵌套注册,可以包含参数模板等
+                }
+            },
+            gagaga: { //第二个子组件  
+                template: "#gagaga"
+            },
+            third: { //第三个子组件  
+                template: "<div>这里是子组件3</div>"
+            },
+        }
+    });
+    </script>
+</body>
+
+</html>

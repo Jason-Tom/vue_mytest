@@ -13,8 +13,11 @@
         {{msg}}
         <button @click="bbbbb">bbbbb操作父组件</button>
         <button @click="bbbbb1">bbbbb操作根组件</button>
+        <button @click="root3">root3操作根组件</button>
+        <!-- 子组件无法调用父组件方法 -->
     </template>
     <div id="root">
+        <button @click="root3">root3操作根组件</button>
         {{msg}}
         <button @click="root1">操作子组件1</button>
         <button @click="root2">操作子组件2</button>
@@ -31,6 +34,7 @@
         <button @click="aaaaa">aaaaa操作父组件</button>
         <br>
         <bbbbb v-ref:lalala></bbbbb>
+        <!-- 父组件访问子组件（子组件调用父组件方法？） -->
     </template>
     <script type="text/javascript">
     Vue.component('aaaaa11111', {
@@ -56,10 +60,13 @@
         },
         methods: {
             bbbbb() {
-                this.$parent.msg = 'bbbbb子组件修改父组件内容';
+                this.$parent.$parent.msg = 'bbbbb子组件修改父组件内容';
+                // 多级跨越（跨级用这个好）
+                // 通过props控制组件属性（封装用这个好）
             },
             bbbbb1() {
                 this.$root.msg = 'bbbbb子组件修改父组件root内容';
+                // 跨级控制属性
             }
         }
     })
@@ -71,9 +78,13 @@
         methods: {
             root1() {
                 this.$refs.lalala.bbbbb1();
+                // 调用的方法相对位置是原来的相对位置
             },
             root2() {
                 this.$refs.child.aaaaa();
+            },
+            root3() {
+                alert('lalala');
             }
         }
     })

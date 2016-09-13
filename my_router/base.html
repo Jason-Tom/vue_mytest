@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue Router Example</title>
+    <style>
+    .v-link-active {
+        color: red;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Hello App!</h1>
+        <p>
+            <a v-link="{ path: '/foo' }">Go to Foo</a>
+            <!-- 对象、键值对指定 -->
+            <a v-link="{ path: '/bar' }">Go to Bar</a>
+            <!-- v-link在vue的api文档，是router的组件 -->
+            <!-- 控制路由显示什么，相当于动态组件里面的事件，改变动态组件指定的选择组件 -->
+        </p>
+        <router-view></router-view>lalala
+        <!-- 路由指定显示位置 -->
+    </div>
+    <router-view></router-view>lalala
+    <script src="vue.js"></script>
+    <!-- 要先加载vue，router是基于vuejs的 -->
+    <script src="vue-router.js"></script>
+    <script src="example.js"></script>
+</body>
+
+</html>

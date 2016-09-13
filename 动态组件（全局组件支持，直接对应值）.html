@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <template id="bbbbb">
+        <span>组件bbbbbb</span>
+    </template>
+    <div id="app">
+        <button @click="toshow">点击让子组件显示</button>
+        <button @click="bbbbb">点击让子组件显示</button>
+        <component :is="which_to_show"></component>
+        <!-- 支持范围内的局部组件和全局组件 -->
+        <component :is="'bbbbb'"></component>
+        <!-- 通过双引号转换，能直接赋值 -->
+        <component :is="'four'"></component>
+        <!-- 不支持，不再直接范围内的组件指定 -->
+        <bbbbb></bbbbb>
+    </div>
+    <script>
+    Vue.component('bbbbb', {
+        template: '#bbbbb',
+        data: function() {
+            return {
+                msg: '组件bbb内容'
+            }
+        },
+        methods: {
+            bbbbb() {
+                this.$parent.msg = 'bbbbb子组件修改父组件内容';
+            },
+            bbbbb1() {
+                this.$root.msg = 'bbbbb子组件修改父组件root内容';
+            }
+        }
+    })
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            which_to_show: "first"
+        },
+        methods: {
+            toshow: function() {
+                var arr = ["first", "second", "third", ""];
+                var index = arr.indexOf(this.which_to_show);
+                if (index < 3) {
+                    this.which_to_show = arr[index + 1];
+                } else {
+                    this.which_to_show = arr[0];
+                }
+            },
+            bbbbb: function() {
+                this.which_to_show = 'bbbbb';
+            },
+        },
+        components: {
+            first: {
+                template: "<div>这里是<four></four>子组件1</div>",
+                components: {
+                    four: {
+                        template: "<div>这里是子组件4</div>",
+                    }
+                }
+            },
+            second: {
+                template: "<div>这里是子组件2</div>"
+            },
+            third: {
+                template: "<div>这里是子组件3</div>"
+            },
+        }
+    });
+    </script>
+</body>
+
+</html>

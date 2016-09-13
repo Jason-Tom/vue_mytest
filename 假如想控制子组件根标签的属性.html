@@ -12,6 +12,7 @@
         <button @click="toshow">点击让子组件显示</button>
         <children v-if="abc">
         </children>
+        {{abc}}
         <!-- 组件可以添加vuejs命令，命令要有父级位置进行控制 -->
     </div>
     <script>
@@ -21,9 +22,10 @@
             abc: false
         },
         methods: {
-            toshow: function() {
+            toshow() {
                 this.abc = !this.abc;
                 // 通过v-if语句切换，该语句挺巧妙，代替if else语句
+                // 方法能直接改变data变量
             }
         },
         components: {
