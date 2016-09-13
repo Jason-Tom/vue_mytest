@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue Router Example</title>
+    <style>
+    .v-link-active {
+        color: red;
+    }
+    </style>
+</head>
+
+<body>
+    <template id="Bar">
+        <p>This is bar!template</p>
+    </template>
+    <!-- template分离出来 -->
+    <div id="app">
+        <h1>Hello App!</h1>
+        <p>
+            <a v-link="{ path: '/foo/jjjjj' }">Go to /foo/jjjjj</a>
+            <a v-link="{ path: '/hahaha' }">Go to /hahaha</a>
+            <a v-link="{ path: '/foo/jjjjj/bar' }">Go to /foo/jjjjj/bar</a>
+            <a v-link="{ path: '/foo/jjjjj/baz' }">Go to /foo/jjjjj/baz</a>
+        </p>
+        <router-view keep-alive></router-view>
+        <!-- 实现缓存？ -->
+        <!-- 名称固定 -->
+    </div>
+    <router-view></router-view>
+    <script src="vue.js"></script>
+    <script src="vue-router.js"></script>
+    <script type="text/javascript">
+    var Foo = Vue.extend({
+            template: '<div class="foo">' +
+                '<h2>This is Foo!</h2>' +
+                '<router-view></router-view>' +
+                // 嵌套路由是值，在当前<router-view></router-view>渲染出来的模板还有<router-view></router-view>，供它显示（说白了，嵌套路由是用来控制子组件显示的）
+                '</div>'
+        })
+        // 路由作用灵活控制组件
+        // 是单页面应用
+
+    var Bar = Vue.extend({
+        template: '#Bar'
+    })
+
+    var Baz = Vue.extend({
+        template: '<p>This is baz!</p>'
+    })
+
+    var router = new VueRouter()
+
+    router.map({
+        '/foo/jjjjj': {
+            // 路径名定义和嵌套路由没有关系
+            component: Foo,
+            subRoutes: {
+                '/': {
+                    component: {
+                        template: '<p>Default sub view for Foo</p>'
+                    }
+                },
+                // 嵌套路由根路径也是，如果没有，指定该目录下的根路径，就不会显示
+                '/bar': {
+                    component: Bar
+                },
+                '/baz': {
+                    component: Baz
+                }
+            }
+        },
+        '/hahaha': {
+            component: Baz,
+        }
+        // 不收自路由放置位置干扰
+    })
+
+    var App = Vue.extend({})
+    router.start(App, '#app')
+    </script>
+</body>
+
+</html>

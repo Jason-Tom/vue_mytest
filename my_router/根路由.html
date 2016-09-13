@@ -15,9 +15,11 @@
     <div id="app">
         <h1>Hello App!</h1>
         <p>
+            <a v-link="{ path: '/' }">lalala</a>
             <a v-link="{ path: '/foo' }">Go to /foo</a>
-            <a v-link="{ path: '/foo/bar' }">Go to /foo/bar</a>
-            <a v-link="{ path: '/foo/baz' }">Go to /foo/baz</a>
+            <a v-link="{ path: '/foo/gagaga' }">Go to /foo/gagaga</a>
+            <a v-link="{ path: '/bar' }">Go to /foo/bar</a>
+            <a v-link="{ path: '/baz' }">Go to /foo/baz</a>
         </p>
         <router-view></router-view>
     </div>
@@ -27,40 +29,47 @@
     var Foo = Vue.extend({
         template: '<div class="foo">' +
             '<h2>This is Foo!</h2>' +
-            '<router-view></router-view>' + // <- nested outlet
             '</div>'
-            // template对应的实际上是一个字符串
     })
 
     var Bar = Vue.extend({
         template: '<p>This is bar!</p>'
     })
+    var lalala = Vue.extend({
+        template: '<p>lalala</p>'
+    })
 
     var Baz = Vue.extend({
         template: '<p>This is baz!</p>'
     })
-
+    var gagaga = Vue.extend({
+        template: '<p>gagaga第三层路由</p>'
+    })
+    var hahaha = Vue.extend({
+        template: '<p>hahaha第三层路由</p>'
+    })
     var router = new VueRouter()
 
     router.map({
+        '/': {
+            component: lalala,
+        },
+        // 没有根路由，会显示为空
         '/foo': {
             component: Foo,
             subRoutes: {
-                '/': {
-                    component: {
-                        template: '<p>Default sub view for Foo</p>'
-                    }
-                },
-                // 嵌套路由作用？
-                // 嵌套路由实现？
-                '/bar': {
-                    component: Bar
-                },
-                '/baz': {
-                    component: Baz
+                '/gagaga': {
+                    component: gagaga
                 }
             }
+        },
+        '/bar': {
+            component: Bar
+        },
+        '/baz': {
+            component: Baz
         }
+        // 刷新的话路由配置会跟着变
     })
 
     var App = Vue.extend({})
