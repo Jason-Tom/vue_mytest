@@ -1,0 +1,35 @@
+{
+    "name": "lalala",
+    "version": "1.0.0",
+    "description": "lalala",
+    "main": "lalala",
+    "directories": {
+        "test": "test"
+    },
+    "scripts": {
+        "test": "lalala",
+        "build": "webpack entry.js bundle.js --progress --colors --watch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "lalaal"
+    },
+    "keywords": [
+        "lalala"
+    ],
+    "author": "lalala",
+    "license": "ISC",
+    "devDependencies": {
+        "path-loader": "*",
+        "vue": "*",
+        "vue-loader": "*",
+        "vue-router": "*",
+        "babel-core": "*",
+        "babel-loader": "*",
+        "babel-plugin-transform-runtime": "*",
+        "babel-preset-es2015": "*",
+        "css-loader": "*",
+        "vue-html-loader": "*",
+        "vue-style-loader": "*"
+    }
+}
