@@ -1,0 +1,35 @@
+{
+  "name": "lalala",
+  "version": "1.0.0",
+  "description": "lalala",
+  "main": "lalala",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "lalala"
+  },
+  "repository": {
+    "type": "git",
+    "url": "lalaal"
+  },
+  "keywords": [
+    "lalala"
+  ],
+  "author": "lalala",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "*",
+    "babel-loader": "*",
+    "babel-plugin-transform-runtime": "*",
+    "babel-preset-es2015": "*",
+    "css-loader": "*",
+    "path-loader": "*",
+    "vue": "*",
+    "vue-html-loader": "*",
+    "vue-loader": "*",
+    "vue-router": "^0.7.13",
+    "vue-style-loader": "*",
+    "webpack": "^1.13.2"
+  }
+}
