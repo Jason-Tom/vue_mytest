@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ message.gagaga }}
+        <button @click='lalala'>点我</button>
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js!'
+        },
+        methods: {
+            lalala: function() {
+                this.message = {
+                    'gagaga': '1'
+                };
+                // js变量被不通知覆盖，会把原有类型改变，并且附上新值
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div v-for="item in arr">
+        <h1>{{item.name}}</h1>
+        <button @click="clickBtn(item)">点击</button>
+    </div>
+    <script>
+    new Vue({
+        el: 'body',
+        data: {
+            arr: [{
+                name: 'AAAA',
+                url: 'aaaaaa'
+            }, {
+                name: 'BBBB',
+                url: 'bbbb'
+            }, {
+                name: 'CCCC',
+                url: 'ccc'
+            }, {
+                name: 'DDDD',
+                url: 'ddd'
+            }, {
+                name: 'EEEE',
+                url: 'eeee'
+            }]
+        },
+        methods: {
+            clickBtn(item) {
+                alert(item.url);
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ message }}
+        <!-- <button @load='myload'>gagaga</button> -->
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js!'
+        },
+        methods: {
+            myload: function() {
+                alert('lalala');
+            }
+        },
+        // ready: function() {
+        //     alert('lalala');
+        // }
+        created: function() {
+                alert('gagaga');
+                this.myload();
+            }
+            // 重复调用会覆盖前面的，要想调用多个方法，在该方法里面在写方法，通过this
+    })
+    </script>
+</body>
+
+</html>

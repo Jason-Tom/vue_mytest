@@ -23,13 +23,12 @@
     "babel-loader": "*",
     "babel-plugin-transform-runtime": "*",
     "babel-preset-es2015": "*",
-    "css-loader": "^0.25.0",
+    "css-loader": "*",
     "path-loader": "*",
-    "style-loader": "^0.13.1",
     "vue": "*",
     "vue-html-loader": "*",
     "vue-loader": "*",
-    "vue-router": "^0.7.13",
+    "vue-router": "*",
     "vue-style-loader": "*",
     "webpack": "^1.13.2"
   }

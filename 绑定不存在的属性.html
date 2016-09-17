@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ message }}
+        <img src="images.jpg" :alt='"message1"' :height='"lalala"' :lalala='"hehehe"'>
+        <!-- 绑定的是变量,绑定字符串要加引号 -->
+        <!-- 能绑定多个 -->
+    </div>
+    <script type="text/javascript">
+    new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue.js!'
+            }
+        })
+        // console.log(document.getElementsByTagName('img')[0].getAttribute("alt"));
+    console.log(document.getElementsByTagName('img')[0].getAttribute("alt"));
+    console.log(document.getElementsByTagName('img')[0].getAttribute("height"));
+    console.log(document.getElementsByTagName('img')[0].getAttribute("lalala"));
+    // 绑定不存在的属性相当于再新建一个这样的属性
+    </script>
+</body>
+
+</html>
