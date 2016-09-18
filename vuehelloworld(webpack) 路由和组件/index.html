@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>hello world</title>
+</head>
+
+<body id="body">
+    <div v-for="item in 6">lalala</div>
+    <button>lalala</button>
+    <router-view></router-view>
+    <a v-link="{ path: '/foo' }">Go to Foo</a>
+    <!-- 一定是链接指定 -->
+    <!-- <span v-link="{ path: '/foo' }">Go to Foo</span> -->
+    <script src="bundle.js"></script>
+</body>
+
+</html>

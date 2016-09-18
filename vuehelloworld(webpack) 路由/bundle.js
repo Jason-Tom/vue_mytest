@@ -24486,7 +24486,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\nh2{\n    color: blue;\n}\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\r\nh2 {\r\n    color: blue;\r\n}\r\n", ""]);
 
 	// exports
 
@@ -24731,7 +24731,7 @@
 /* 14 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n<h2>Hello, World22222!</h2>\n";
+	module.exports = "\n<h2>Hello, World22222!</h2>\n";
 
 /***/ }
 /******/ ]);
