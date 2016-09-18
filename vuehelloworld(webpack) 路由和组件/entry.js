@@ -12,7 +12,7 @@ hahaha.world();
 // var jjj=new hahaha();
 // jjj.world();
 
-var aaa = require('./js/advance2');
+var aaa = require('./js/中文');
 aaa.a();
 // 能重复使用
 // js  chucuo buhuijixuzhixing  
