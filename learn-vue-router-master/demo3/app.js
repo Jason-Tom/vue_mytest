@@ -1,10 +1,9 @@
 // Define some components
 var Foo = Vue.extend({
-    template:
-    '<div class="foo">' +
-      '<h2>This is Foo!</h2>' +
-      '<router-view></router-view>' + // <- nested outlet
-    '</div>'
+    template: '<div class="foo">' +
+        '<h2>This is Foo!</h2>' +
+        '<router-view></router-view>' + // <- nested outlet
+        '</div>'
 })
 
 var Bar = Vue.extend({
@@ -12,7 +11,7 @@ var Bar = Vue.extend({
 })
 
 var Baz = Vue.extend({
-	template:'<p>This is baz! route.path = {{$route.path}}</p>'
+    template: '<p>This is baz! route.path = {{$route.path}}</p>'
 })
 
 // The router needs a root component to render.
@@ -31,33 +30,49 @@ var router = new VueRouter()
 // Vue.extend(), or just a component options object.
 // We'll talk about nested routes later.
 router.map({
-    '/user': {
-        name:'user',
-        component: {
-            template: '<p>query is {{$route.query | json}}</p>'
+        '/lalala': {
+            name: 'user',
+            // 什么用？
+            component: {
+                // template: '<p>query is {{$route.query}}</p>'
+                // 得到对象
+                template: '<p>query is {{$route.query.gagaga}}</p>'
+                    // 获取对象具体值（路径传入的对象全部保存在一个对象里）
+                    // template: '<p>query is {{$route.query.user}}</p>'
+                    // template: '<p>query is {{$route.query | json}}</p>'
+                    // 将对象解析成json字符串
+                    // 链接以字符窜形式传入
+            }
+        },
+        '/user/:username': {
+            // ？？？
+            component: {
+                // template: '<p>username is {{$route.params | json}}</p>'
+                template: '<p>username is {{$route.params.user}}</p>'
+                // template: '<p>username is {{$route.params.gagaga}}</p>'
+                    // template: '<p>username is {{$route.params}}</p>'
+                    // 模版只能有一个
+                    // 通过对象传入数据
+            }
+        },
+        '/user/:username/post/:post_id': {
+            component: {
+                template: '<p>username is {{$route.params | json}}</p>'
+            }
+        },
+        '/user/*any': {
+            // ?????
+            component: {
+                template: '<p>route.params is  {{$route.params | json}}</p>'
+            }
+        },
+        '/foo/*any/bar': {
+            component: {
+                template: '<p>route.params is  {{$route.params | json}}</p>'
+            }
         }
-    },
-    '/user/:username': {
-        component: {
-            template: '<p>username is {{$route.params | json}}</p>'
-        }
-    },
-    '/user/:username/post/:post_id': {
-        component: {
-            template: '<p>username is {{$route.params | json}}</p>'
-        }
-    },
-    '/user/*any': {
-        component: {
-            template: '<p>route.params is  {{$route.params | json}}</p>'
-        }
-    },
-    '/foo/*any/bar': {
-        component: {
-            template: '<p>route.params is  {{$route.params | json}}</p>'
-        }
-    }
-})
+    })
+    // 作用
 
 // Now we can start the app!
 // The router will create an instance of App and mount to

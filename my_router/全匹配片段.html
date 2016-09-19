@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue Router Example</title>
+    <style>
+    .v-link-active {
+        color: red;
+    }
+    </style>
+</head>
+
+<body class="lalala">
+    <div id="app">
+        <h1>Hello App!</h1>
+        <p>
+            <a v-link="{path:'/foo/a/b/bar/hh'}">Go to /foo/*any/bar  --> /foo/a/b/bar</a>
+        </p>
+        <router-view></router-view>
+    </div>
+    <router-view></router-view>
+    <script src="vue.js"></script>
+    <script src="vue-router.js"></script>
+    <script src="example.js"></script>
+    <script type="text/javascript">
+    var App = Vue.extend({})
+
+    var router = new VueRouter()
+
+    router.map({
+        '/foo/*any/bar/*any1': {
+            // 能加载多个
+            component: {
+                template: '<p>route.params is  {{$route.params | json}}</p>'
+            }
+        }
+    })
+    router.start(App, '#app')
+    </script>
+</body>
+
+</html>

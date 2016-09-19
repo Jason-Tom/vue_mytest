@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue Router Example</title>
+    <style>
+    .v-link-active {
+        color: red;
+    }
+    </style>
+</head>
+
+<body class="lalala">
+    <div id="app">
+        <h1>Hello App!</h1>
+        <p>
+            <a v-link="{name:'user',query:{user:1,gagaga:'gagaga2',hahaha:'gege'}}">Go to {path:'/user',query:{user:1}} </a>
+            <br>
+            <a v-link="{name:'user1',query:{user:1,gagaga:'gagaga2',hahaha:'gege'}}">Go to {path:'/user',query:{user:1}} </a>
+        </p>
+        <router-view></router-view>
+    </div>
+    <router-view></router-view>lalala
+    <script src="vue.js"></script>
+    <script src="vue-router.js"></script>
+    <script src="example.js"></script>
+    <script type="text/javascript">
+    var App = Vue.extend({})
+
+    var router = new VueRouter()
+
+    router.map({
+        '/lalala': {
+            // 路径路由能设定潜逃组件，具名路径能帮助实现灵活跳转
+            name: 'user',
+            // 固定属性，具名路径，html通过json对象，先指定名字，再通过参数添加路径
+            // 通过名字指定路径
+            component: {
+                template: '<p>query is {{$route.query.user}}</p>'
+            }
+        },
+        '/lalala1': {
+            name: 'user1',
+            // 固定属性，具名路径，html通过json对象，先指定名字，再通过参数添加路径
+            // 什么用？
+            component: {
+                // template: '<p>query is {{$route.query}}</p>'
+                // 得到对象
+                // template: '<p>query is {{$route.query.gagaga}}</p>'
+                // 获取对象具体值（路径传入的对象全部保存在一个对象里）
+                template: '具名路径测试</p>'
+                    // template: '<p>query is {{$route.query | json}}</p>'
+                    // 将对象解析成json字符串
+                    // 链接以字符窜形式传入
+            }
+        }
+    })
+    router.start(App, '#app')
+    </script>
+</body>
+
+</html>

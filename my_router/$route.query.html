@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue Router Example</title>
+    <style>
+    .v-link-active {
+        color: red;
+    }
+    </style>
+</head>
+
+<body class="lalala">
+    <div id="app">
+        <h1>Hello App!</h1>
+        <p>
+            <a v-link="{path:'/lalala?user=9&gagaga=gagaga1'}">Go to /user?query  --> /user?user=1</a>
+            <!-- 不能像具名路径那样传入变量 -->
+            <!-- 在这里添加vue变量实现动态控制？？？？？ -->
+            <!-- 如何添加上vue -->
+        </p>
+        <router-view></router-view>
+    </div>
+    <router-view></router-view>lalala
+    <script src="vue.js"></script>
+    <script src="vue-router.js"></script>
+    <script src="example.js"></script>
+    <script type="text/javascript">
+    var App = Vue.extend({})
+
+    var router = new VueRouter()
+
+    router.map({
+        '/lalala': {
+            name: 'user',
+            // 作用，给路由添加相应的参数，传递给自己组件，更灵活的控制组件
+            component: {
+                // template: '<p>query is {{$route.query}}</p>'
+                // 得到对象
+                template: '<p>query is {{$route.query.gagaga}}</p>'
+                    // 用来获取链接后面的键值对（保存成一个对象）
+                    // 获取对象具体值（路径传入的对象全部保存在一个对象里）
+                    // template: '<p>query is {{$route.query.user}}</p>'
+                    // template: '<p>query is {{$route.query | json}}</p>'
+                    // 将对象解析成json字符串
+                    // 链接以字符窜形式传入
+            }
+        }
+    })
+    router.start(App, '#app')
+    </script>
+</body>
+
+</html>

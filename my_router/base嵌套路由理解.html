@@ -23,6 +23,9 @@
             <a v-link="{ path: '/hahaha' }">Go to /hahaha</a>
             <a v-link="{ path: '/foo/jjjjj/bar' }">Go to /foo/jjjjj/bar</a>
             <a v-link="{ path: '/foo/jjjjj/baz' }">Go to /foo/jjjjj/baz</a>
+            <a v-link="{name:'user',query:{user:1,gagaga:'gagaga2',hahaha:'gege'}}">Go to {path:'/user',query:{user:1}} </a>
+            <br>
+            <a v-link="{name:'user1',query:{user:1,gagaga:'gagaga2',hahaha:'gege'}}">Go to {path:'/user',query:{user:1}} </a>
         </p>
         <router-view keep-alive></router-view>
         <!-- 实现缓存？ -->
@@ -56,14 +59,17 @@
         '/foo/jjjjj': {
             // 路径名定义和嵌套路由没有关系
             component: Foo,
+            name: 'user',
+            // 可以调换顺序
             subRoutes: {
                 '/': {
                     component: {
-                        template: '<p>Default sub view for Foo</p>'
+                        template: '<p>Default sub view for Foo</p>{{$route.path}}'
                     }
                 },
                 // 嵌套路由根路径也是，如果没有，指定该目录下的根路径，就不会显示
                 '/bar': {
+                    name: 'user1',
                     component: Bar
                 },
                 '/baz': {

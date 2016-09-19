@@ -1,18 +1,18 @@
 // Define some components
 var Foo = Vue.extend({
-    template:
-    '<div class="foo">' +
-      '<h2>This is Foo!</h2>' +
-      '<router-view></router-view>' + // <- nested outlet
-    '</div>'
-})
+        template: '<div class="foo">' +
+            '<h2>This is Foo!</h2>' +
+            '<router-view></router-view>' + // <- nested outlet
+            '</div>'
+    })
+    // 自定义一个组件或者导入组件
 
 var Bar = Vue.extend({
     template: '<p>This is bar!</p>'
 })
 
 var Baz = Vue.extend({
-	template:'<p>This is baz!</p>'
+    template: '<p>This is baz!</p>'
 })
 
 // The router needs a root component to render.
@@ -33,18 +33,18 @@ var router = new VueRouter()
 router.map({
     '/foo': {
         component: Foo,
-        subRoutes:{
-        	'/':{
-        		component: {
-        			template: '<p>Default sub view for Foo</p>'
-        		}
-        	},
-        	'/bar':{
-        		component:Bar
-        	},
-        	'/baz':{
-        		component:Baz
-        	}
+        subRoutes: {
+            '/': {
+                component: {
+                    template: '<p>Default sub view for Foo</p>'
+                }
+            },
+            '/bar': {
+                component: Bar
+            },
+            '/baz': {
+                component: Baz
+            }
         }
     }
 })

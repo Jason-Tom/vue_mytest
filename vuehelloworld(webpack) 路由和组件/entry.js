@@ -25,8 +25,7 @@ require('./mycss.css');
 // 导入的文件要重新打包
 // index.html不用重新打包
 var VueRouter = require('vue-router');
-// var $ = require('./js/jquery.js');
-var $ = require('jquery');
+var $ = require('./js/jquery.js');
 // 善用npm包管理
 var Vue = require('./js/vue.js');
 // 导入自己的js文件，要加上也要加上变量获取
@@ -50,7 +49,9 @@ router.start(App, '#body')
     // 指定路由作用范围，配置的路由会在这个范围起作用
 
 $(document).ready(function() {
-    $("button").click(function() {
-        alert("hahaha");
-    });
+    // $("button").click(function() {
+        alert("测试jquery是否能动态导包");
+        // 不支持
+    // });
 });
+// var $ = require('jquery');
