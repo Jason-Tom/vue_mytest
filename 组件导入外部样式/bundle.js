@@ -49,7 +49,7 @@
 	var Vue = __webpack_require__(1);
 	var hello = __webpack_require__(3)
 	// 要导入很多包
-	__webpack_require__(9)
+	__webpack_require__(10)
 
 	new Vue({
 	    el: "body",
@@ -10336,7 +10336,7 @@
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] index.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(12)
+	__vue_template__ = __webpack_require__(9)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -10688,15 +10688,21 @@
 
 /***/ },
 /* 9 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<h2>Hello, World!</h2>\n";
+
+/***/ },
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(10);
+	var content = __webpack_require__(11);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(11)(content, {});
+	var update = __webpack_require__(12)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -10713,7 +10719,7 @@
 	}
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(6)();
@@ -10721,13 +10727,13 @@
 
 
 	// module
-	exports.push([module.id, "body {\r\n    background-color: purple;\r\n    font-size: 100px;\r\n}\r\n", ""]);
+	exports.push([module.id, "body {\r\n    background-color: purple;\r\n    font-size: 100px;\r\n}\r\nh2{\r\n  display: inline-block;\r\n  width: 45%;\r\n}", ""]);
 
 	// exports
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -10977,12 +10983,6 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
-
-/***/ },
-/* 12 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<h2>Hello, World!</h2>\n";
 
 /***/ }
 /******/ ]);
