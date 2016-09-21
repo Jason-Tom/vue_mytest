@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>hello world</title>
+</head>
+
+<body id="body">
+    <button>lalala</button>
+    <router-view></router-view>
+    <h2>hahaha</h2>
+    <button type="button" class="btn btn-default">button</button>
+    <a v-link="{ path: '/foo' }">Go to Foo</a>
+    <!-- <span v-link="{ path: '/foo' }">Go to Foo</span> -->
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <script src="bundle.js"></script>
+    <!-- 里面文件加载是异步的 -->
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript" src='bootstrap.js'></script>
+    <!-- boostrap统一放在外面 -->
+    <style type="text/css" media="screen">
+    h2 {
+        color: yellow;
+    }
+    
+    button {
+        background-color: pink;
+    }
+    </style>
+    <!-- 即便样式放在导入文件后面 -->
+</body>
+
+</html>

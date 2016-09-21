@@ -190,7 +190,7 @@
 
 
 	// module
-	exports.push([module.id, "button {\r\n    background-color: green;\r\n}\r\n", ""]);
+	exports.push([module.id, "button {\r\n    background-color: yellow;\r\n}\r\n", ""]);
 
 	// exports
 

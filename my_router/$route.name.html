@@ -5,28 +5,40 @@
     <meta charset="utf-8">
     <title>Vue Router Example</title>
     <style>
-    .v-link-active {
+    span {
         color: red;
+        background-color: yellow;
     }
     </style>
 </head>
 
 <body class="lalala">
     <div id="app">
+        <input v-model="message">
         <h1>Hello App!</h1>
         <p>
-            <a v-link="{name:'user',query:{user:1,gagaga:'gagaga2',hahaha:'gege'}}">Go to {path:'/user',query:{user:1}} </a>
+            <span v-link="{name:'user',query:{user:1,gagaga:'gagaga2',hahaha:'gege'}}">Go to {path:'/user',query:{user:1}} </span>
+            <!-- 里面暂时放不了变量 -->
             <br>
-            <a v-link="{name:'user1',query:{user:1,gagaga:'gagaga2',hahaha:'gege'}}">Go to {path:'/user',query:{user:1}} </a>
+            <div v-link="{name:'user1',query:{user:1,gagaga:'gagaga2',hahaha:'gege'}}">Go to {path:'/user',query:{user:1}} </div>
         </p>
         <router-view></router-view>
     </div>
-    <router-view></router-view>lalala
     <script src="vue.js"></script>
     <script src="vue-router.js"></script>
-    <script src="example.js"></script>
+    <!-- <script src="example.js"></script> -->
     <script type="text/javascript">
-    var App = Vue.extend({})
+    var App = Vue.extend({
+            data() {
+                return {
+                    message: 'user1',
+                    str: 'yyyyyyy'
+                }
+                // 可以在作用域内定义组件
+            }
+        })
+        // 这是一个没有绑定的vm，不要重复嵌套
+    Vue.config.debug = true;
 
     var router = new VueRouter()
 
@@ -43,7 +55,6 @@
         '/lalala1': {
             name: 'user1',
             // 固定属性，具名路径，html通过json对象，先指定名字，再通过参数添加路径
-            // 什么用？
             component: {
                 // template: '<p>query is {{$route.query}}</p>'
                 // 得到对象
@@ -56,7 +67,7 @@
             }
         }
     })
-    router.start(App, '#app')
+    router.start(App, 'body')
     </script>
 </body>
 

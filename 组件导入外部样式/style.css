@@ -1,6 +1,7 @@
 body {
-    background-color: purple;
+    /*background-color: purple;*/
     font-size: 100px;
+    background-image: url('img/images.jpg');
 }
 h2{
   display: inline-block;

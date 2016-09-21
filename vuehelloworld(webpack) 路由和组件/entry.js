@@ -1,4 +1,6 @@
-var lalala = require('./js/myjs1.js');
+// var lalala = require('./js/myjs1.js');
+require('./js/myjs1.js');
+// 里面没有封装，直接导入
 var hello = require('./js/module.js');
 var Hello = require('./js/module');
 // 导入自定义模块，后面能省略.js

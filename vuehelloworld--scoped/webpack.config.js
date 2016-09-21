@@ -17,12 +17,7 @@ module.exports = {
             }, {
                 test: /\.vue$/,
                 loader: 'vue'
-            }, {
-                test: /\.(png|jpg)$/,
-                loader: 'url?limit=1000'
-                    // 小于1000kb压缩
             }
-            // 这里就相当于配置好对应的loder
             // css需要相应的加载器翻译，默认只支持js
             // 放置相应的加载器
         ]

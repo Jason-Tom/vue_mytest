@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+    <!-- script本身是异步的，vue加载也不例外，vue要先加载，再被调用 -->
+</head>
+
+<body>
+    <div id="app">
+        {{ message }}
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js!'
+        }
+    })
+
+    var s = setTimeout("alert('2 seconds!')", 2000)
+    // console.log('a');
+    </script>
+    <script type="text/javascript">
+    var t = setTimeout("alert('1 seconds!')", 1000)
+    // 方法异步
+    // console.log('b');
+    </script>
+</body>
+
+</html>
