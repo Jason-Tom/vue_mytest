@@ -7,19 +7,23 @@
     <script type="text/javascript" src="vue.js"></script>
 </head>
 
-<body style="background-color: green" >
+<body>
     <div id="app">
-        <div v-for="item in 11" @click='lalala'>111</div>
+        <img :src="src" alt="">
+        <button @click='lalala'>方法改变单项绑定参数</button>
     </div>
     <script type="text/javascript">
     new Vue({
         el: '#app',
         data: {
-            message: 'Hello Vue.js!'
+            message: 'Hello Vue.js!',
+            src: 'images.jpg'
         },
         methods: {
             lalala: function() {
-                alert('hahaha');
+                alert(this.src);
+                this.src = 'gagaga.gif';
+                alert(this.src);
             }
         }
     })

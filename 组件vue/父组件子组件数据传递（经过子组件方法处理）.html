@@ -9,8 +9,6 @@
 <body>
     <div id="demo">
         <the-parent></the-parent>
-        <!--<first-child></first-child>
-      <second-child :childmsg = "parentMsg"></second-child>-->
     </div>
     <script src="vue.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
@@ -29,23 +27,31 @@
     })
 
     var secondChild = Vue.extend({
-        template: '<p>{{ say }}{{ childmsg }}</p>',
+        template: '<p>{{ say }}sss{{childmsg}} <button @click="tatata">点我</button></p>',
         props: ['childmsg'],
         data: function() {
             return {
-                say: 'Child-B: The data came from my parent is: '
+                say: 'Child-B: The data came from my parent is: ' + this.childmsg,
+                say1: 'say1',
             }
         },
+        methods: {
+            tatata: function() {
+                // this.say += this.say1;
+                this.say += this.childmsg;
+                // 能进入子组件通过方法控制其参数
+            }
+        }
 
     })
 
     var parent = Vue.extend({
         template: '<div><first-child></first-child><second-child :childmsg="parentMsg"></second-child></div>',
-        // 向子组件传值，不能通过路由向其他组件传值
         data: function() {
             return {
                 recievedMsg: "hello",
-                parentMsg: ""
+                parentMsg: "77755577"
+                    // 不能动态的通过路由传值
             }
         },
         components: {
@@ -64,18 +70,6 @@
 
     new Vue({
         el: "#demo",
-        //        data: {
-        //          parentMsg: ""
-        //        },
-        //        components:{
-        //          'first-child': firstChild,
-        //          'second-child': secondChild
-        //        },
-        //        events: {
-        //          'inputter-msg': function(inputter){
-        //            this.parentMsg = inputter;
-        //          }
-        //        }
     })
     </script>
 </body>

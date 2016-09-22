@@ -25,9 +25,9 @@
     <div id="app">
         <span :style="{ 'color': 'green' }">lalala</span>
         <span :class="testcolor">gagaga</span>
-        <span :class="{ 'on-e': isA, 'two': isB }">hahaha</span>
+        <span :class="{ 'on-e': isA, 'two': isB ">hahaha</span>
         <!-- 最终转换成多个样式表 -->
-        <div :style="{width:'100px',height:'100px',backgroundColor:'red'}"></div>
+        <div :style="{width:'100px',height:'100px',backgroundColor:'red','background-image': 'url(images.jpg)'}"></div>
         <!-- 绑定就是传一个字符串json数据过去，然后他会解析成相应的json数据 -->
         <div :style="styleObject">333333</div>
         <div :style="[styleObject, styleObject1]">333333</div>

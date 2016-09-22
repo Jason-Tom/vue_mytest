@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js">
+    </script>
+    <style type="text/css" media="screen">
+    .on-e {
+        color: red;
+    }
+    
+    .two {
+        color: green;
+    }
+    
+    .three {
+        font-size: 50px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        {{message}}
+        <!-- <div :style="{width:'100%',height:'500px',backgroundColor:'red','background-image': 'url(http://123.206.96.76:8080/M2shop"+"/resource/proImgUpload/1.jpg)'}"></div> -->
+        <div :style="{width:'100%',height:'500px',backgroundColor:'red',backgroundImage: urlStr(message)}"></div>
+        <div :style="{width:'100%',height:'500px',backgroundColor:'red',backgroundImage: `url(http://123.206.96.76:8080/M2shop${message})`}"></div>
+        <!-- <div :style="{width:'100%',height:'500px',backgroundColor:'red','background-image': 'url(http://123.206.96.76:8080/M2shop/"+message+"'}"></div> -->
+        <!-- <div style="height: 800px;" :style="styleObject">sdfsdfs</div> -->
+        <!-- <button @click="lalala">点我</button> -->
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            message: '/resource/proImgUpload/1.jpg',
+            message1: "{width:'100%',height:'500px',backgroundColor:'red','background-image': 'url(http://123.206.96.76:8080/M2shop/resource/proImgUpload/1.jpg)'}",
+            styleObject: {
+                backgroundImage: 'url(http://123.206.96.76:8080/M2shop/resource/proImgUpload/1.jpg)'
+            },
+            styleObject1: {
+                backgroundImage: 'url(http://123.206.96.76:8080/M2shop'
+            },
+        },
+        methods: {
+            lalala: function() {
+                this.styleObject1.backgroundImage += "/resource/proImgUpload/1.jpg)"
+                console.log("gege:" + this.styleObject1.backgroundImage);
+            },
+            urlStr:function(tmp){
+                return `url(http://123.206.96.76:8080/M2shop${tmp})`;
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

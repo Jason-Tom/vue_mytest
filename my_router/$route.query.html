@@ -15,10 +15,9 @@
     <div id="app">
         <h1>Hello App!</h1>
         <p>
-            <a v-link="{path:'/lalala?user=9&gagaga=gagaga1'}">Go to /user?query  --> /user?user=1</a>
-            <!-- 不能像具名路径那样传入变量 -->
-            <!-- 在这里添加vue变量实现动态控制？？？？？ -->
-            <!-- 如何添加上vue -->
+            {{message}}
+            <a v-link="{path:message}">Go to /user?query  --> /user?user=1</a>
+            <!-- 把变量当成字符串传入 -->
         </p>
         <router-view></router-view>
     </div>
@@ -27,7 +26,13 @@
     <script src="vue-router.js"></script>
     <script src="example.js"></script>
     <script type="text/javascript">
-    var App = Vue.extend({})
+    var App = Vue.extend({
+        data: function() {
+            return {
+                message: '/lalala?user=9&gagaga=gagaga1'
+            }
+        }
+    })
 
     var router = new VueRouter()
 

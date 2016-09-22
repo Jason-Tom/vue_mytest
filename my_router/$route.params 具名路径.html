@@ -13,9 +13,12 @@
 
 <body class="lalala">
     <div id="app">
-        <h1>Hello App!</h1>
+        <h1>Hello App!</h1> {{message}}
         <p>
-            <a v-link="{name:'user',query:{user:1,gagaga:'gagaga2',hahaha:'gege'}}">Go to {path:'/user',query:{user:1}} </a>
+            <a v-link="{path:'/lalala',query:{user:message,gagaga:'gagaga2',hahaha:'gege'}}">Go to {path:'/user',query:{user:1}} </a>
+            <!-- 完美 -->
+            <!-- <a v-link="{name:'user',query:{user:message,gagaga:'gagaga2',hahaha:'gege'}}">Go to {path:'/user',query:{user:1}} </a> -->
+            <!-- 具名路径能传递变量数据 -->
             <br>
             <a v-link="{name:'user1',query:{user:1,gagaga:'gagaga2',hahaha:'gege'}}">Go to {path:'/user',query:{user:1}} </a>
         </p>
@@ -26,7 +29,13 @@
     <script src="vue-router.js"></script>
     <script src="example.js"></script>
     <script type="text/javascript">
-    var App = Vue.extend({})
+    var App = Vue.extend({
+        data: function() {
+            return {
+                message: 'gagagaga注册vzxcv'
+            }
+        }
+    })
 
     var router = new VueRouter()
 
