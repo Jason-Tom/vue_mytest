@@ -12,7 +12,7 @@
         <button @click='mypush("mypush")'>mypush</button>
         <button @click='mypop()'>mypop</button>
         <button @click='myFilter()'>myFilter</button>
-        <button @click='myConcat([{message: "222"}])'>myConcat</button>
+        <button @click='myConcat([{message: "222"},{message: "4444"}])'>myConcat</button>
         <button @click='mySlice(2,4)'>mySlice</button>
         <!-- 方法参数是什么对象就放入什么 -->
         <div v-for="(myindex,item) in lalala">{{myindex}}、{{item.message}}</div>

@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <button @click="gagaga" @click="lalala">点我</button> -->
+        <!-- 重复的以前面一个为基准，不管是否是相同方法 -->
+        <button @click="hahaha">点我</button>
+        <!-- 只能指定一个方法，要先指定多个方法，调用一个方法前去执行两个或者多个方法 -->
+        <button @mouseover="gagaga" @click="lalala">点我啊</button>
+        <!-- 添加多个事件有执行顺序 -->
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js!'
+        },
+        methods: {
+            lalala: function() {
+                console.log("lalala");
+            },
+            gagaga: function() {
+                console.log("gagaga");
+            },
+            hahaha: function() {
+                this.lalala();
+                this.gagaga();
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

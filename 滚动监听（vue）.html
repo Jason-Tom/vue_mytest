@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+    <style type="text/css" media="screen">
+    div {
+        border: 1px solid black;
+        width: 200px;
+        height: 100px;
+        overflow: scroll;
+    }
+    </style>
+</head>
+
+<body id="app">
+    <!-- {{message}} -->
+    <button @click="lalala">点我</button>
+    <div id="lalala" @scroll="myFunction1">In my younger and more vulnerable years my father gave me some advice that I've been turning over in my mind ever since.
+        <br>
+        <br> 'Whenever you feel like criticizing anyone,' he told me, just remember that all the people in this world haven't had the advantages that you've had.'</div>
+    <p style="position: fixed;top: 100px;left: 700px;">滚动 <span id="demo1">0</span> 次。</p>
+    <script>
+    y = 0;
+
+    function myFunction1() {
+        document.getElementById("demo1").innerHTML = y += 1;
+    }
+    // document.getElementById("lalala").onscroll = function() {
+    //     myFunction1()
+    // };
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js!'
+        },
+        methods: {
+            lalala: function() {
+                console.log("ok");
+            },
+            myFunction1: function() {
+                document.getElementById("demo1").innerHTML = y += 1;
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

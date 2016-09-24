@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue_mytest</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <span v-el:msg>hello</span>
+        <span v-el:other-msg>world</span>
+        <button @click='lalala'>点我</button>
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js!'
+        },
+        methods: {
+            lalala: function() {
+                console.log(this.$els.msg.textContent);
+                console.log(this.$els.otherMsg.textContent);
+                // 组件指定会不会互相干扰
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>
